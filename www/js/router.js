@@ -22,7 +22,14 @@ angular.module('starter')
 
     //tabs change
     $stateProvider
-      .state('tabs.main',{
+    //father tab
+      .state('tab', {
+        url: '/tab',
+        templateUrl: 'templates/tabs.html',
+        abstract: true
+      })
+
+      .state('tab.main',{
         url: '/main',
         views: {
           'tab_main':{
@@ -32,7 +39,7 @@ angular.module('starter')
         }
       })
 
-      .state('tabs.mall', {
+      .state('tab.mall', {
         url: '/mall',
         views: {
           'tab_mall' : {
@@ -42,7 +49,7 @@ angular.module('starter')
         }
       })
 
-      .state('tabs.user', {
+      .state('tab.user', {
         url: '/user',
         views: {
           'tab_user' : {
@@ -51,13 +58,8 @@ angular.module('starter')
           }
         }
       })
-      //father tab
-      .state('tabs', {
-        url: '/tabs',
-        templateUrl: 'templates/tabs.html',
-        abstract: true
-      })
 
-    $urlRouterProvider.otherwise('/tabs/main')
+
+    $urlRouterProvider.otherwise('/tab/main')
 
   });
