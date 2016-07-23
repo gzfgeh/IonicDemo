@@ -33,7 +33,7 @@ angular.module('starter')
         url: '/main',
         views: {
           'tab_main':{
-            templateUrl: 'templates/main.html',
+            templateUrl: 'templates/tab_main.html',
             controller: 'mainCtrl'
           }
         }
@@ -43,8 +43,28 @@ angular.module('starter')
         url: '/mall',
         views: {
           'tab_mall' : {
-            templateUrl: 'templates/mall.html',
+            templateUrl: 'templates/tab_mall.html',
             controller: 'mallCtrl'
+          }
+        }
+      })
+
+      .state('tab.order', {
+        url: '/order',
+        views: {
+          'tab_order' : {
+            templateUrl: 'templates/tab_order.html',
+            controller: 'orderCtrl'
+          }
+        }
+      })
+
+      .state('tab.info', {
+        url: '/info',
+        views: {
+          'tab_info' : {
+            templateUrl: 'templates/tab_info.html',
+            controller: 'infoCtrl'
           }
         }
       })
@@ -53,7 +73,7 @@ angular.module('starter')
         url: '/user',
         views: {
           'tab_user' : {
-            templateUrl : 'templates/user.html',
+            templateUrl : 'templates/tab_user.html',
             controller: 'userCtrl'
           }
         }

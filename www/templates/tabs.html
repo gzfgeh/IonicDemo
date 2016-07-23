@@ -1,19 +1,21 @@
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
-  <!-- main Tab -->
-  <ion-tab title="Main" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/main">
-    <ion-nav-view name="tab_main"></ion-nav-view>
-  </ion-tab>
+<ion-view title="上海化交" id="tabs">
+  <ion-tabs class="tabs-stable tabs-icon-top ">
+    <ion-tab title="首页" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/tab/main">
+      <ion-nav-view name="tab_main"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="商城" icon-on="ion-ios-cart"  icon-off="ion-ios-cart-outline" href="#/tab/mall" >
+      <ion-nav-view name="tab_mall"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="交易" icon-on="ion-ios-paper"  icon-off="ion-ios-paper-outline" href="#/tab/order">
+      <ion-nav-view name="tab_order"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="资讯" icon-on="ion-ios-world"  icon-off="ion-ios-world-outline" href="#/tab/info">
+      <ion-nav-view name="tab_info"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="我" icon-on="ion-ios-person"  icon-off="ion-ios-person-outline" href="#/tab/user">
+      <ion-nav-view name="tab_user"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
 
-  <!-- mall Tab -->
-  <ion-tab title="Mall" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/mall">
-    <ion-nav-view name="tab_mall"></ion-nav-view>
-  </ion-tab>
-
-  <!-- user Tab -->
-  <ion-tab title="User" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/user">
-    <ion-nav-view name="tab_user"></ion-nav-view>
-  </ion-tab>
-
-
-</ion-tabs>
 
