@@ -1,6 +1,100 @@
-<ion-view view-title="Main" id="main">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
+<ion-view view-title="上海化交" id="main">
+
+  <ion-content padding="true" class="has-header scem-bg">
+  <ion-slide-box slide-interval='2000' auto-play='true' does-continue='true' on-slide-changed="slideHasChanged($index)" style="height: 150px">
+    <ion-slide>
+      <div class="box blue"><img src="img/1.jpg" width="100%"></div>
+    </ion-slide>
+    <ion-slide>
+      <div class="box blue"><img src="img/2.jpg" width="100%"></div>
+    </ion-slide>
+    <ion-slide>
+    <div class="box blue"><img src="img/3.jpg" width="100%"></div>
+  </ion-slide>
+    <ion-slide>
+      <div class="box blue"><img src="img/4.jpg" width="100%"></div>
+    </ion-slide>
+  </ion-slide-box>
+
+  <div class="cus-main-first">
+    <div class="row">
+      <div class="col">
+        <i class="ion-ios-analytics-outline" style="background: #EA6644;"></i>
+        <div>报盘</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-paper-outline" style="background: #599eec;"></i>
+        <div>趋势</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-keypad-outline" style="background: #7788F2;"></i>
+        <div>报盘</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-star-outline" style="background: #66CCEE;"></i>
+        <div>趋势</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <i class="ion-ios-chatbubble-outline" style="background: #2bb2a3;"></i>
+        <div>成交</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-copy-outline" style="background: #f82;"></i>
+        <div>报盘</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-color-filter-outline" style="background: #FF7360;"></i>
+        <div>趋势</div>
+      </div>
+      <div class="col">
+        <i class="ion-ios-albums-outline" style="background: #84d23d;"></i>
+        <div>报盘</div>
+      </div>
+    </div>
+  </div>
+
+  <div>买卖塑料</div>
+  <div class="row">
+    <div class="col" align="center" >
+      Nymex<br>
+      <span class="scem-font-blue">49.37</span>
+    </div>
+    <div class="col" align="center" >
+      石脑油<br>
+      <span class="scem-font-blue">429.37</span>
+    </div>
+    <div class="col" align="center" >
+      乙烯<br>
+      <span class="scem-font-blue">1567</span>
+    </div>
+    <div class="col" align="center" >
+      丙烯<br>
+      <span class="scem-font-blue">4500</span>
+    </div>
+  </div>
+
+    <ion-tabs class="tabs-stable tabs-icon-top ">
+      <ion-tab icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/tab/bestOffer">
+        <ion-nav-view name="tab_best_offer"></ion-nav-view>
+      </ion-tab>
+      <ion-tab icon-on="ion-ios-cart"  icon-off="ion-ios-cart-outline" href="#/tab/bestOfferPp" >
+        <ion-nav-view name="tab_best_offer_pp"></ion-nav-view>
+      </ion-tab>
+      <ion-tab icon-on="ion-ios-paper"  icon-off="ion-ios-paper-outline" href="#/tab/bestOfferPe">
+        <ion-nav-view name="tab_best_offer_pe"></ion-nav-view>
+      </ion-tab>
+      <ion-tab icon-on="ion-ios-world"  icon-off="ion-ios-world-outline" href="#/tab/bestOfferPvc">
+        <ion-nav-view name="tab_best_offer_pvc"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+
+  <ion-list>
+    <ion-item ng-repeat="offerListItem in offerList">
+      {{offerListItem}}
+    </ion-item>
+  </ion-list>
 
   </ion-content>
 </ion-view>
