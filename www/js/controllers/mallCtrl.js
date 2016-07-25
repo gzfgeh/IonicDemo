@@ -13,4 +13,19 @@ angular.module('starter.controllers')
     })
   };
 
+
+
+  $scope.moreData = true;
+
+  $scope.doLoadMore = function () {
+    MallService.doLoadMore()
+      .then(function (ret) {
+        $scope.list = ret;
+      }, function (error) {
+
+      }).finally(function () {
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+    })
+  }
+
 });
