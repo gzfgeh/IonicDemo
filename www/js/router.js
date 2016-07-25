@@ -79,6 +79,46 @@ angular.module('starter')
         }
       })
 
+      .state('tab.main.bestOffer',{
+        url: '/bestOffer',
+        views: {
+          'best_offer':{
+            templateUrl: 'templates/bestOffer.html',
+            controller: 'mainCtrl'
+          }
+        }
+      })
+
+      .state('tab.main.bestOfferPp',{
+        url: '/bestOfferPp',
+        views: {
+          'best_offer_pp':{
+            templateUrl: 'templates/bestOfferPp.html',
+            controller: 'mainCtrl'
+          }
+        }
+      })
+
+      .state('tab.main.bestOfferPe',{
+        url: '/bestOfferPe',
+        views: {
+          'best_offer_pe':{
+            templateUrl: 'templates/bestOfferPp.html',
+            controller: 'mainCtrl'
+          }
+        }
+      })
+
+      .state('tab.main.bestOfferPvc',{
+        url: '/bestOfferPvc',
+        views: {
+          'best_offer_pvc':{
+            templateUrl: 'templates/bestOfferPp.html',
+            controller: 'mainCtrl'
+          }
+        }
+      })
+
 
     $urlRouterProvider.otherwise('/tab/main')
 

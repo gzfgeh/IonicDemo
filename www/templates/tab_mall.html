@@ -1,5 +1,13 @@
-<ion-view view-title="Mall">
-  <ion-content>
-      Mall
+<ion-view view-title="现货商城">
+  <ion-content padding="true" class="has-header">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+
+      <ion-list>
+        <ion-item ng-repeat="listItem in list track by $index">
+          {{listItem}}
+        </ion-item>
+      </ion-list>
+
   </ion-content>
+
 </ion-view>
