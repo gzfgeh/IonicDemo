@@ -8,10 +8,10 @@
         </ion-item>
       </ion-list>
 
-    <div class="cus-bottom-loading" height="100%">
-      <ion-spinner icon="spiral" class="cus-bottom-icon"></ion-spinner><span height="100%">玩命加载中</span>
-    </div>
-    <ion-infinite-scroll ng-if="moreData" on-infinite="doLoadMore()" distance="0%" ></ion-infinite-scroll>
+    <!--<div class="cus-bottom-loading">-->
+      <!--<ion-spinner icon="spiral" class="cus-bottom-icon"></ion-spinner><span>玩命加载中</span>-->
+    <!--</div>-->
+    <ion-infinite-scroll icon="ion-loading-c" ng-if="moreData" on-infinite="doLoadMore()" distance="1%" ></ion-infinite-scroll>
 
   </ion-content>
 

@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.service('MallService', function($q) {
+.service('MallService', function($q, $timeout) {
 
   var mallList = [];
 
@@ -8,9 +8,11 @@ angular.module('starter.services', [])
 
     var deferred = $q.defer();
     mallList.length = 0;
-    for(var i=0; i<20; i++){
-      mallList.push('mall item list ' + i+1);
-    };
+    $timeout(function () {
+      for(var i=0; i<20; i++){
+        mallList.push('mall item list ' + i+1);
+      };
+    }, 1000);
 
     deferred.resolve(mallList);
     return deferred.promise;
@@ -23,9 +25,11 @@ angular.module('starter.services', [])
      */
   this.doLoadMore = function () {
     var deferred = $q.defer();
-      for(var i=0; i<20; i++){
-        mallList.push('mall item list ' + i+1);
-      };
+      $timeout(function () {
+        for(var i=0; i<20; i++){
+          mallList.push('mall item list ' + i+1);
+        };
+      }, 1000);
     deferred.resolve(mallList);
     return deferred.promise;
   }
