@@ -40,4 +40,8 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
+  <chcp>
+    <local-development enabled="true" />
+    <config-file url="http://192.168.1.108:8889/chcp.json" />
+  </chcp>
 </widget>
