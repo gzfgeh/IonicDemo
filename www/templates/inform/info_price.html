@@ -1,0 +1,48 @@
+
+
+<!--资讯-化交价格-->
+<ion-list class="info-type">
+
+    <ion-item ng-repeat="item in PriceList " item="item" >
+        <div class="cus-item" ng-click="onItemToggle(item,$index)">
+        <div class="row">
+            <div class="col">
+                {{item.SQRank}} {{item.SQNo}}
+            </div>
+
+              <div class="col cus-icon-text">
+                    <span class="cus-green"><i class="ion-ios-pricetag-outline"></i>{{item.SQType}}</span>
+                    <span class="cus-red tr"><i class="ion-ios-location-outline"></i>{{item.sqArea}}</span>
+                </div>
+            <div class="cus-blue cus-arrow-info"><i class="ion-ios-arrow-down" ng-show="item.hide"></i><i class="ion-ios-arrow-up" ng-hide="item.hide"></i></div>
+        </div>
+
+        <div class="row">
+            <div class="col">价格：{{item.SQMinPrice}} - {{item.SQMaxPrice}}</div>
+
+          <div class="col">涨跌：<span class="red-color" ng-if="item.dropPlus==true">+{{item.SQDropRange}}</span>
+            <span class="green-color" ng-if="item.dropPlus!=true">{{item.SQDropRange}}</span>/
+            <span class="red-color" ng-if="item.upPlus==true">+{{item.SQUpRange}}</span>
+            <span class="green-color" ng-if="item.upPlus!=true">{{item.SQUpRange}}
+            </span></div>
+        </div>
+
+        <!--<div class="row cus-icon-text">
+            <div class="col cus-green"><i class="ion-ios-pricetag-outline"></i>{{item.SQType}}</div>
+            <div class="col cus-red tr"><i class="ion-ios-location-outline"></i>{{item.sqArea}}</div>
+        </div>-->
+
+        </div>
+
+        <div class="chart" ng-hide="item.hide">
+            <div id="{{item.chartId}}">
+              <div ng-include="item.chartHtml" style="background-image: url('img/watermark.png')" ng-click="goKChartDetail(infoKChartList)"></div>
+              <!--<div ng-include="item.chartHtml" style="background-image: url('img/watermark.png')" ></div>-->
+            </div>
+
+        </div>
+
+    </ion-item>
+
+
+</ion-list>

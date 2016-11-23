@@ -1,0 +1,17 @@
+
+<!--资讯-化交讲堂-->
+
+<ul class="cus-list" ng-repeat="lecture in infoLectureList">
+
+
+    <li ng-click="goDetail('tabs.info_detail', lecture.ID);">
+
+        <div class="row cus-icon-text">
+            <div class="col">{{lecture.InfoTitle}}</div>
+            <div class="col cus-date">{{lecture.Date.substr(0,10)}}</div>
+        </div>
+
+    </li>
+
+</ul>
+

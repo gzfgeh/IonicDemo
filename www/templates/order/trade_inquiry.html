@@ -1,0 +1,120 @@
+<ion-view title="交收信息">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">
+                <i class="icon ion-ios-telephone"></i>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+        <div class="cus-detail-list" style="padding-right: 16px;">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">N-MPHM-160-PP 均聚纤维</span>
+                    <span class="cus-tag red-bg">现货</span>
+                </div>
+
+                <div class="col col-right">
+                    <span class="scem-font-gray">7分钟前</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成&nbsp;&nbsp;交&nbsp;&nbsp;号</div>
+                <div class="col blue-color">CJ1609070012</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">可提货数量</div>
+                <div class="col">11批 / 11吨</div>
+            </div>
+
+            <div class="row border-row">
+                <div class="col col-33">最小交收量</div>
+                <div class="col">11批</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">提货数量</div>
+                <div class="col">
+                   <input type="text" class="cus-input-half">
+                   批 / 0 吨
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">生效日期</div>
+                <div class="col">
+                    <input type="text" class="cus-input-half"><span style="display:inline-block;width: 10%;text-align: center">-</span><input type="text" class="cus-input-half">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">运输公司</div>
+                <div class="col">
+                    <input type="text" class="cus-input">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">司机身份证</div>
+                <div class="col">
+                    <input type="number" class="cus-input">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">车牌号</div>
+                <div class="col">
+                    <input type="number" class="cus-input">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">联系电话</div>
+                <div class="col">
+                    <input type="number"  class="cus-input">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">提货人姓名</div>
+                <div class="col">
+                    <input type="number" class="cus-input-half">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">下家申请单</div>
+                <div class="col " >
+                    <input type="number" style="" class="cus-input">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">备注</div>
+                <div class="col ">
+                    <textarea name="" id="" cols="30" rows="10" class="cus-input"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="mallcontact">
+            <div class="row">
+                <div class="col col-50"  ng-click="goPay()"><button class="button button-full button-light">
+                    取消
+                </button></div>
+                <div class="col col-50" ng-click="goPay()"><button class="button button-full red-bg-font" >
+                    提交申请
+                </button></div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

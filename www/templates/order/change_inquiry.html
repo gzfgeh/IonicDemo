@@ -1,0 +1,149 @@
+<ion-view title="修改卖盘">
+
+	<div class="bar bar-header bar-positive">
+		<button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+		<h3 class="title">修改卖盘</h3>
+		<a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+	</div>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 50px;">
+
+		<div class="cus-detail-list">
+
+		<div class="row">
+			<div class="col">
+				<span class="cus-category">{{item.CategoryLeafName}} {{item.BrandName}}</span>
+				<span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+			</div>
+
+			<div class="col col-right">
+				<span class="scem-font-gray">{{item.FormatCreateDate}}</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+			<div class="col">{{item.SourcePlaceName}}</div>
+		</div>
+
+			<div class="row">
+				<div class="col col-33">包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装</div>
+				<div class="col">{{item.FormatPackageStandard}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+				<div class="col">{{item.ResidualQuantity}}批/<span class="red-color">{{item.ResidualWeight}}</span>吨</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+				<div class="col"><span class="red-color">{{item.Price}}</span>元/吨</div>
+			</div>
+
+      <div class="row">
+        <div class="col col-33">交易单位</div>
+        <div class="col">{{item.TradeUnitNumber}}吨/批</div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">最小交收量</div>
+        <div class="col">{{item.minPi}}批/{{item.MinWeight}}吨</div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">货物质量</div>
+        <div class="col">合格</div>
+      </div>
+
+			<div class="row">
+				<div class="col col-33">交收方式</div>
+				<div class="col">{{item.FormatSettlementMethod}}</div>
+			</div>
+
+		<div class="row">
+			<div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+			<div class="col">{{item.DeliveryPlace}}</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">交货日期</div>
+			<div class="col">{{item.FormatDeliveryDate}}</div>
+		</div>
+
+			<div class="row">
+				<div class="col col-33">仓库地址</div>
+				<div class="col">{{item.WHAddress}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">仓库联系人及电话</div>
+				<div class="col">{{item.StoreContactName}}</div>
+			</div>
+
+
+      <div class="row" ng-if="!finishAll">
+        <div class="col col-33">保证金收费标准</div>
+        <div class="col">{{item.FormatDepositRate}} </div>
+      </div>
+
+      <div class="row" ng-if="!finishAll">
+        <div class="col col-33">扣款总金额</div>
+        <div class="col red-color">{{item.FormatTotalPayable}}元</div>
+      </div>
+      <div class="row" ng-if="!finishAll">
+        <div class="col col-33">保证金金额</div>
+        <div class="col red-color">{{(item.Deposit).toFixed(2)}}元</div>
+      </div>
+
+      <div class="row" ng-if="finishAll">
+        <div class="col col-33">扣款总金额</div>
+        <div class="col red-color">{{item.FormatTotalPayable}}元(保证金金额<span class="red-color">{{item.FormatTwoDecimalDeposit}}元</span>)</div>
+      </div>
+      <div class="row" ng-if="finishAll">
+        <div class="col col-33">当前资金账户余额</div>
+        <div class="col red-color">{{item.USERBALANCEFromOra}}元</div>
+      </div>
+
+
+      <div class="row">
+        <div class="col col-33">买家提货附加费</div>
+        <div class="col">	{{item.FormatExtraLogisticsCost}}元/吨</div>
+      </div>
+
+      <div class="row" ng-if="item.theDetailShowStatus && item.theDetailShowStatus != 1">
+        <div class="col col-33">到货日期</div>
+        <div class="col">{{item.FormatDeliveryStartDate}} - {{item.FormatDeliveryEndDate}}</div>
+      </div>
+
+      <div class="row" ng-if="item.theDetailShowStatus && item.theDetailShowStatus != 1">
+        <div class="col col-33">保证金比例</div>
+        <div class="col">	{{item.FormatDepositRate}}</div>
+      </div>
+
+
+		</div>
+
+
+	</ion-content>
+
+	<div class="mallcontact mallfix">
+		<div class="row" ng-if="!finishAll">
+			<div class="col"  ng-click="goBack()" ><button class="button button-full button-light">
+				上一步
+			</button></div>
+			<div class="col"  ng-click="goRelease()" ><button class="button button-full red-bg-font">
+				确定
+			</button></div>
+
+		</div>
+
+		<div class="row" ng-if="finishAll">
+			<div class="col"  ng-click="goFinish()" ><button class="button button-full red-bg-font">
+				完成
+			</button></div>
+
+		</div>
+	</div>
+</ion-view>

@@ -1,0 +1,90 @@
+<ion-view id="mall" title="询盘详细" class=" ">
+
+
+
+	<ion-nav-bar class="bar bar-positive" align-title="center">
+		<ion-nav-back-button></ion-nav-back-button>
+	</ion-nav-bar>
+
+  <!--<ion-nav-buttons side="left">-->
+    <!--<button class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goBack()"></button>-->
+  <!--</ion-nav-buttons>-->
+
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+
+
+		<div class="cus-detail-list">
+		<div class="row">
+			<div class="col">
+				<span class="cus-category">{{itemObj.CategoryShow}}</span>
+				<span class="cus-tag red-bg">现货</span>
+			</div>
+
+			<div class="col col-right">
+				<span class="scem-font-gray">{{itemObj.REC_CREATETIMEShow.split(" ")[0]}}</span>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+			<div class="col col-45">牌号</div>
+			<div class="col">{{itemObj.BrandShow}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">产地</div>
+			<div class="col">{{itemObj.SourcePlaceShow}}</div>
+		</div>
+
+
+		<div class="row">
+		  <div class="col col-45">交易单位（吨/批）</div>
+		  <div class="col">{{itemObj.TradeUnitNumber}}</div>
+		</div>
+		<div class="row">
+		  <div class="col col-45">数量（批）</div>
+		  <div class="col">{{itemObj.Quantity}}</div>
+		</div>
+		<div class="row">
+		  <div class="col col-45">总重量（吨）</div>
+		  <div class="col">{{itemObj.TotalWeight}}</div>
+		</div>
+
+
+		<div class="row">
+		  <div class="col col-45">最小交收量（批）</div>
+		  <div class="col">{{itemObj.MinQuantity}}</div>
+		</div>
+		<div class="row">
+		  <div class="col col-45">最小交收重量（吨）</div>
+		  <div class="col">{{minWeigh}}</div>
+		</div>
+
+      <div class="row">
+        <div class="col col-45 green-color">报盘价格（元/吨）</div>
+        <div class="col price green-color">￥{{itemObj.Price}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col col-45 red-color">询盘价格（元/吨）</div>
+        <div class="col price">￥{{itemObj.Enquiry_Price}}</div>
+      </div>
+
+		<div class="row">
+		  <div class="col col-45">报盘时间</div>
+		  <div class="col">{{itemObj.REC_CREATETIMEShow.split(" ")[0]}}</div>
+		</div>
+
+		</div>
+
+
+
+
+
+
+
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,74 @@
+<!--<ion-view view-title="我的卖盘" class="gray-bg">-->
+
+    <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+        <!--<ion-nav-back-button ng-click="goBack()"></ion-nav-back-button>-->
+    <!--</ion-nav-bar>-->
+
+<ion-view class="gray-bg">
+
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <h3 class="title">我的卖盘</h3>
+  </div>
+
+
+    <!--<ion-header-bar class= " bar-subheader mytrade-subheader"  ng-show="hide">-->
+        <!--<div class="row text-center white-bg">-->
+            <!--<span class="col" ng-click="classifyMenuClick();" ng-class="menuClass1">分类<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="selectPlace();" ng-class="menuClass2">产地<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="selectDeliveryPlace();" ng-class="menuClass3">交货地<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="sortMenuClick();" ng-class="menuClass4">排序<i class="ion-android-arrow-dropdown"></i></span>-->
+        <!--</div>-->
+    <!--</ion-header-bar>-->
+  <ion-header-bar class= " bar-subheader mytrade-subheader">
+    <div class="row text-center">
+      <!--<div class="col"><div class="col-50" ng-click="tabClick(false)" ng-class="{true:'active'}[!onClickedFirstTap]"  >我是买家</div></div>-->
+      <!--<div class="col"><div class="col-50" ng-click="tabClick(true)"  ng-class="{true:'active'}[onClickedFirstTap]" >我是卖家</div></div>-->
+      <!--<div class="col" ng-click="TabAllClick()" ng-class="Tabclass3" >全部</div>-->
+
+      <div class="col"><div class="col-50" ng-click="TabSpotClick()" ng-class="Tabclass1" >现货</div></div>
+      <div class="col"><div class="col-50" ng-click="TabPreSaleClick()" ng-class="Tabclass2" >预售</div></div>
+
+    </div>
+  </ion-header-bar>
+
+
+
+    <ion-content scroll="true" class="gray-bg has-header"  >
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down" ></ion-refresher>
+        <ion-list ng-if="hasData">
+            <ion-item  ng-repeat="data in listData"  ng-click="goDetail(data)" on-finish-render-filters>
+                <div class="trade-list row" style="padding: 0;white-space: normal;">
+                    <div class="col col-80" style="padding: 0">
+                  <span ng-if="data.FormatGoodsType=='现货'" class="settlement-state">{{data.FormatGoodsType}}</span>
+                  <span ng-if="data.FormatGoodsType=='预售'" class="settlement-border">{{data.FormatGoodsType}}</span>
+                  {{data.FormatCategoryBrand + '-' + data.SourcePlaceName}}</div>
+                  <div class="item-note col col-20" style="padding: 0;text-align: right;">{{data.preDate}}</div>
+                </div>
+                <div class="red-color" style="font-size: 18px"> {{data.Price}}元/吨 <span class="gray-color" style="font-size: 14px;">
+                  {{((data.DealtQuantity * data.TradeUnitNumber + data.ResidualQuantity * data.TradeUnitNumber) | number:6) * 1}}吨
+                </span>
+                    <div class="item-note" ng-if ="data.FormatLeadsStatus == '有效'" style="color: royalblue">{{data.FormatLeadsStatus}}</div>
+                    <div class="item-note" ng-if ="data.FormatLeadsStatus == '成交'" style="color: green">{{data.FormatLeadsStatus}}</div>
+                    <div class="item-note" ng-if ="data.FormatLeadsStatus == '失效'" style="color: gray">{{data.FormatLeadsStatus}}</div>
+                    <div class="item-note" ng-if ="data.FormatLeadsStatus == '撤销'" style="color: #EA5251">{{data.FormatLeadsStatus}}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+      <ion-infinite-scroll  ng-if="needShow" immediate-check="false" spinner="dots" on-infinite="doLoadMore()" distance="5%" ></ion-infinite-scroll>
+      <div class="no-data-col" ng-if="!hasData">
+          <img src="img/no_trade_data.png"/>
+          <p>没有搜到你想要的内容</p>
+          <div>世界那么大，我想再看看</div>
+      </div>
+    </ion-content>
+
+
+
+<!--     <div ng-if="!hasData" class="mallcontact">
+      <button class="button  button-clear button-light"  ng-click="tryAgainClicked()">
+        {{tryTitle}}
+      </button>
+    </div> -->
+
+</ion-view>

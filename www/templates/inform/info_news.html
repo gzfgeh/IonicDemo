@@ -1,0 +1,16 @@
+
+<!--资讯-化交资讯:1773（市场动态：1775，工厂价格 ： 1776，装置：1777）-->
+
+<ul class="cus-list" ng-repeat="market in infoMarketList">
+
+
+    <li ng-click="goDetail('tabs.info_detail', market.ID);" >
+
+
+        <div class="row cus-icon-text">
+            <div class="col">{{market.InfoTitle}}</div>
+            <div class="col cus-date">{{market.Date.substr(0,10)}}</div>
+        </div>
+    </li>
+
+</ul>

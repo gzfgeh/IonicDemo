@@ -1,0 +1,80 @@
+<ion-view title="成交详细">
+
+	<ion-nav-bar class="bar bar-positive" align-title="center">
+		<ion-nav-back-button></ion-nav-back-button>
+	</ion-nav-bar>
+
+
+
+
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+		<div class="cus-detail-list">
+
+		<div class="row">
+			<div class="col">
+				<span class="cus-category">{{itemObj.CategoryShow}}</span>
+				<span class="cus-tag red-bg">现货</span>
+			</div>
+
+			<div class="col col-right">
+				<span class="scem-font-gray">{{itemObj.TradeDateShow.split(" ")[0]}}</span>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col col-45">成交号</div>
+			<div class="col">{{itemObj.OrderId}}</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-45">牌号</div>
+			<div class="col">{{itemObj.BrandShow}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">产地</div>
+			<div class="col">{{itemObj.SourcePlaceShow}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">交易地</div>
+			<div class="col">{{itemObj.StoreHouseShow}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">成交重量	（吨）</div>
+			<div class="col">{{itemObj.Weight}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">成交单价（元/吨）</div>
+			<div class="col">{{itemObj.Price}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">货款总额（元）</div>
+			<div class="col">{{itemObj.Amount}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">交易手续费（元）</div>
+			<div class="col">{{itemObj.BuyFee}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">未交收重量（吨）</div>
+			<div class="col">{{itemObj.NoDeliveryWeight}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">交收重量（吨）</div>
+			<div class="col">{{itemObj.DeliveryWeight}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">成交状态</div>
+			<div class="col blue-color">{{itemObj.TradeStatusShow}}</div>
+		</div>
+		<div class="row">
+			<div class="col col-45">成交时间</div>
+			<div class="col">{{itemObj.TradeDateShow.split(" ")[0]}}</div>
+		</div>
+
+		</div>
+
+	</ion-content>
+</ion-view>

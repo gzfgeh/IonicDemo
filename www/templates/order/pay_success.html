@@ -1,0 +1,69 @@
+<ion-view title="支付货款成功">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="right">
+        <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+        <div class="cus-detail-list">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+                    <span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成交数量</div>
+                <div class="col">{{item.Weight}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">成交单价</div>
+                <div class="col">{{item.Price|number:2}}元/吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">总&nbsp;&nbsp;货&nbsp;&nbsp;款</div>
+                <div class="col">{{item.Amount|number:2}}元</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">手&nbsp;&nbsp;续&nbsp;&nbsp;费</div>
+                <div class="col">{{item.TwoDecimalFee|number:2}}元</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">手续费标准</div>
+                <div class="col">{{item.FormatFeeRate}}</div>
+            </div>
+            <div class="row" style="border-bottom: 1px solid #E3E3E3;padding-bottom: 10px;">
+                <div class="col col-33">优惠券抵用</div>
+                <div class="col">{{item.CouponFee.toFixed(2)}}元</div>
+            </div>
+          <!--  滞纳金 item.LateFee-->
+            <div class="row" >
+                <div class="col col-33">扣款总额</div>
+                <div class="col red-color">{{(item.TakenMoney + item.TwoDecimalFee - item.CouponFee).toFixed(2)}}元</div>
+            </div>
+            <div class="row" >
+                <div class="col col-33">账户余额</div>
+                <div class="col red-color">{{item.FirmBalance.toFixed(2)}}元</div>
+            </div>
+        </div>
+
+        <div class="mallcontact">
+            <div class="row">
+                <div class="col"><button class="button button-full red-bg-font" ng-click="goBack()">
+                    关闭
+                </button></div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

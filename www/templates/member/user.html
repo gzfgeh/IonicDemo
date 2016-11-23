@@ -1,0 +1,166 @@
+<ion-view id="my" class="cus-my">
+
+	<div class="bar bar-header bar-positive">
+
+		<h1 class="title">会员中心</h1>
+	</div>
+
+
+  <ion-content padding="true" class="has-header gray-bg">
+
+
+    <div class="cus-my-top">
+      <div class="row">
+        <div class="col-25 cus-left">
+          <img class="cus-avatar" ng-src={{imgSrc}} ng-click="imgPicker()"/>
+        </div>
+        <div class="col-75 cus-right">
+          <div class="mobile" ng-click="imgPicker()">{{mobile}}</div>
+          <div class="welcome">您好！欢迎光临上海化交网</div>
+			<!--<i class="icon ion-ios-arrow-right"></i>-->
+        </div>
+      </div>
+    </div>
+
+	<div class="cus-my-middle">
+		<div class="row">
+		  <!--<div class="col" ng-click="goToTrade()">发盘 <span class="red-color">{{panCount}}</span> 次</div>-->
+		  <div class="col" ng-click="goToTrade()">已卖 <span class="red-color">{{sellCount}}</span> 吨</div>
+      <div class="col" ng-click="goToTrade()">已买 <span class="red-color">{{buyCount}}</span> 吨</div>
+		  <!--<div class="col"><span class="red-color">{{totalPrice}}</span> 元总额</div>-->
+		</div>
+	</div>
+
+
+
+		<ion-list class="cus-my-col">
+
+			<!--<ion-item>-->
+				<!--<span class="row">-->
+				   <!--<span class="col col-left">-->
+					   <!--<i class="iconfont icon-zijinyue"></i><span>授信额度</span>-->
+				   <!--</span>-->
+					<!--<span class="col col-right">-->
+				   		<!--<span class="gray-tag red-color">{{capital | currency:"¥"}}</span>-->
+					<!--</span>-->
+				<!--</span>-->
+
+			<!--</ion-item>-->
+
+			<ion-item>
+				<span class="row">
+				   <span class="col col-left col-25">
+					   <i class="iconfont icon-maoyishang"></i><span>交易商</span>
+				   </span>
+					<span class="col col-right" style="text-align: left;">
+				   		<span class="gray-tag"style="float: right">{{dealer}}</span>
+					</span>
+				</span>
+
+			</ion-item>
+
+
+			<ion-item>
+				<span class="row">
+				   <span class="col col-left col-25">
+					   <i class="iconfont icon-maoyishangbianhao"></i><span>交易商编码</span>
+				   </span>
+					<span class="col col-right" style="text-align: left;">
+				   		<span class="gray-tag"style="float: right">{{firmID}}</span>
+					</span>
+				</span>
+
+			</ion-item>
+
+			<ion-item ng-click="msgClicked()">
+				<span class="row">
+				   <span class="col col-left">
+					   <i class="iconfont icon-wodexiaoxi"></i><span>我的消息<span ng-if=hasRedPoint class="cus-red-circle"></span></span>
+				   </span>
+					<span class="col col-right">
+						<span class="gray-color">您有<span class="red-color" ng-bind="msgCount">{{msgCount}}</span>条未读消息</span>
+				   		<i class="icon ion-ios-arrow-right"></i>
+					</span>
+				</span>
+			</ion-item>
+
+
+			<ion-item href="#/tabs/modifyPass">
+				<span class="row">
+				   <span class="col col-left">
+					   <i class="iconfont icon-xiugaimima"></i><span>修改密码</span>
+				   </span>
+					<span class="col col-right">
+				   		<span class="gray-color">用户登录密码修改</span><i class="icon ion-ios-arrow-right"></i>
+					</span>
+				</span>
+      </ion-item>
+      <ion-item ng-click="setPaymentPwd()">
+				<span class="row">
+				   <span class="col col-left">
+					   <i class="iconfont icon-shurumima"></i><span>设置/修改支付密码</span>
+				   </span>
+					<span class="col col-right">
+				   		<span class="gray-color">支付密码设置/修改</span><i class="icon ion-ios-arrow-right"></i>
+					</span>
+				</span>
+			</ion-item>
+
+			<ion-item href="#/tabs/aboutCompany">
+				<span class="row">
+				   <span class="col col-left">
+					   <i class="iconfont icon-guanyuwomen1"></i><span>关于我们</span>
+				   </span>
+					<span class="col col-right">
+				   		<span class="gray-color">关于上海化交</span><i class="icon ion-ios-arrow-right"></i>
+					</span>
+				</span>
+
+			</ion-item>
+
+			<ion-item>
+				<span class="row">
+				   <span class="col col-left">
+					   <i class="iconfont icon-lianxikefu"></i><span>联系客服</span>
+				   </span>
+					<span class="col col-right">
+				   		<span class="gray-color"><a href="tel:400-720-9209" class="gray-color">400-720-9209</a></span><i class="icon ion-ios-arrow-right"></i>
+					</span>
+				</span>
+
+			</ion-item>
+
+			<ion-item>
+				<span class="row" ng-click="checkForNewVersion()">
+				   <span class="col col-left">
+					   <i class="iconfont icon-banbengengxin" ></i><span>当前版本</span>
+				   </span>
+					<span class="col col-right">
+				   		<span class="gray-color">{{versionNum}}</span><!-- <i class="icon ion-ios-arrow-right"></i> -->
+					</span>
+				</span>
+
+			</ion-item>
+
+		</ion-list>
+
+
+
+		<ion-list class="cus-my-col cus-bottom-btn">
+
+
+			<div class="row">
+				<button class="button button-block button-assertive" ng-click="loginOut();">{{loginStatus}}</button>
+			</div>
+
+
+		</ion-list>
+
+
+
+
+		<div style="height:10px;"></div>
+
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+
+<!--资讯-数据中心：1772（生产统计：1779，进出口：1780）-->
+
+<ul class="cus-list" ng-repeat="produce in infoProducenumberList">
+
+    <li ng-click="goDetail('tabs.info_detail', produce.ID);">
+
+
+        <div class="row cus-icon-text">
+            <div class="col">{{produce.InfoTitle}}</div>
+            <div class="col cus-date">{{produce.Date.substr(0,10)}}</div>
+        </div>
+
+
+    </li>
+
+</ul>
+

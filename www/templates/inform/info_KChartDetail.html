@@ -1,0 +1,28 @@
+
+<ion-view title="数据详情">
+  <meta charset="utf-8">
+
+
+  <ion-nav-bar class="bar bar-positive" align-title="center" >
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+
+  <ion-content class="scem-bg" >
+
+    <div class="chart"  >
+
+      <div class="cus-chart-title">{{infoKChartDetailList.SQRank}} - {{infoKChartDetailList.SQNo}} / {{infoKChartDetailList.SQType}}</div>
+      <div class="cus-chart-tab">
+        <span ng-class="item.class" ng-repeat="item in tabList" ng-click="renderChart($index);">{{item.value}}</span>
+      </div>
+
+      <div id="chartDetailId" style="background-image: url('img/watermark.png');height:300px;">
+
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>
+
+

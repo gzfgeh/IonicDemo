@@ -1,0 +1,185 @@
+<ion-view id="mall" class=" ">
+
+  <div class="bar bar-header bar-positive">
+
+     <form ng-submit="searchData()" style="width: 100%">
+        <div class="item-input-wrapper cus-header-search">
+          <i class="icon ion-ios-search placeholder-icon" ></i>
+          <input type="search" placeholder="投放企业、牌号查询" ng-model="input.searchKey">
+        </div>
+      </form>
+  </div>
+  <div class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="投放企业、牌号、仓库关键字查询" ng-model="input.searchKey">
+  </div>
+
+
+  <ion-header-bar class="bar-subheader cus-subheader">
+      <div class="row">
+      <span class="col" ng-click="classifyMenuClick();" ng-class="menuClass1">级别<i class="ion-android-arrow-dropdown"></i></span>
+      <span class="col" ng-click="selectPlace();" ng-class="menuClass2">产地<i class="ion-android-arrow-dropdown"></i></span>
+      <span class="col" ng-click="selectDeliveryPlace();" ng-class="menuClass3">交货地<i class="ion-android-arrow-dropdown"></i></span>
+      <span class="col" ng-click="sortMenuClick();" ng-class="menuClass4">排序<i class="ion-android-arrow-dropdown"></i></span>
+        <span class="col" ng-click="sortStateClick();" ng-class="menuClass5">状态<i class="ion-android-arrow-dropdown"></i></span>
+    </div>
+      <div class="cus-all-menu">
+        <div class="cus-classify-list hide" ng-class="classifyClass">
+          <!--<div class="row" ng-repeat="item in classifyList" ng-click="classifyClick($index)">-->
+            <!--<div class="col-80">{{item.name}}</div>-->
+            <!--<div class="col-20 place-right">-->
+              <!--<i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>-->
+            <!--</div>-->
+          <!--</div>-->
+          <ion-checkbox ng-repeat="item in classifyList"
+                        ng-model="item.checked"
+                        ng-checked="item.checked"
+                        ng-click="classbocClick($index)" style="color: #333;">
+            {{ item.name }}
+          </ion-checkbox>
+         <div class="row" style="padding: 0;">
+           <div class="col-20" style="text-align: center" ng-click="clearMall()"><button class="button button-clear fl" style="color: #333" >取消</button></div>
+           <div class="col-60"></div>
+           <div class="col-20" style="text-align: center"><button class="button button-clear " style="color: #333" ng-click="ensureMall()">确定</button></div>
+         </div>
+        </div>
+        <div class="cus-classify-list hide" ng-class="sortClass">
+          <div class="row" ng-repeat="item in sortList" ng-click="sortClick($index)">
+            <div class="col-80">{{item.name}}</div>
+            <div class="col-20 place-right">
+              <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+            </div>
+          </div>
+        </div>
+
+    <div class="cus-classify-list hide" ng-class="stateClass">
+      <div class="row" ng-repeat="item in stateList" ng-click="stateClick($index)">
+        <div class="col-80">{{item.name}}</div>
+        <div class="col-20 place-right">
+          <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+        </div>
+      </div>
+    </div>
+    </div>
+    </ion-header-bar>
+
+
+
+    <div class="cus-shadow hide" ng-class="shadowClass" ng-click="shadowClick();"></div>
+    <ion-content padding="true" class="has-header has-subheader cus-has-subheader"  on-scroll="onScroll()">
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+      <ion-list class="cus-mall-list" ng-if="!showBlank">
+
+      <ion-item ng-repeat="mallItem in mallList track by $index" class="cus-mall-item">
+        <div ng-click="gotoDetail(mallItem)">
+          <div>
+            <span ng-if="mallItem.GoodsTypeShow == '现货'" class="cus-type-Spot">{{mallItem.GoodsTypeShow}}</span>
+            <span ng-if="mallItem.GoodsTypeShow == '预售'" class="cus-type-preSale">{{mallItem.GoodsTypeShow}}</span>
+            {{mallItem.CategoryShow}} - {{mallItem.BrandShow}} - {{mallItem.SourcePlaceShow}}
+          </div>
+            <div class="second-col" style="width:85%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="price">{{mallItem.Price}}元/吨</span>
+            <span class="cus-tag">{{mallItem.theTotalWeight}}吨&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{mallItem.FirmShowName}}</span></div>
+          <div class="cus-item-right">
+            <div>{{mallItem.preDate}}</div>
+            <span ng-if="mallItem.LeadsStatusShow =='成交'" style="color: green" >{{mallItem.LeadsStatusShow}}</span>
+            <span ng-if="mallItem.LeadsStatusShow == '有效'" style="color: royalblue">{{mallItem.LeadsStatusShow}}</span>
+            <span ng-if="mallItem.LeadsStatusShow == '失效'" style="color: gray">{{mallItem.LeadsStatusShow}}</span>
+          </div>
+        </div>
+      </ion-item>
+		</ion-list>
+
+    <ion-infinite-scroll ng-if="moreData" immediate-check="false" spinner="dots" on-infinite="doLoadMore()" distance="1%" ></ion-infinite-scroll>
+	</ion-content>
+
+
+  <div class="no-data-col" ng-if="showBlank">
+    <img src="img/no_trade_data.png"/>
+    <p>没有搜到你想要的内容</p>
+    <div>世界那么大，我想再看看</div>
+  </div>
+
+
+  <script id="placeModal.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar-positive" align-title="center">
+        <h1 class="title">产地选择</h1>
+        <button class="button button-clear" ng-click="placeConfirm();">确定</button>
+      </ion-header-bar>
+      <ion-header-bar class="bar-subheader cus-select-top">
+        <div class="cus-select-place" id="selectPlace">
+          <span ng-repeat="item in placeListSelect">{{item.value}}<i class="ion-android-close" ng-click="removePlace(item);"></i></span>
+        </div>
+      </ion-header-bar>
+      <ul class="cus-letter-list">
+        <!--右边ABCD导航-->
+        <li ng-repeat="item in letterList" ng-class="item.class" ng-click="scrollToLetter(item.top,$index)">
+          {{item.value}}
+        </li>
+      </ul>
+      <ion-content delegate-handle="mainScroll" class="cus-place-content" id="placeContent" ng-style="topStyle">
+        <div ng-repeat="item in placeList" class="place-all-list">
+          <div class="cus-radio-title cus-place-title">{{item.name}}</div>
+          <div class="cus-place-list">
+            <div class="row"  ng-repeat="item in item.data"
+                 ng-click="placeListClick(item)">
+              <div class="col-80">{{ item.value }}</div>
+              <div class="col-20 place-right">
+                <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+  </script>
+
+
+  <script id="deliveryPlaceModal.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar-positive" align-title="center">
+        <h1 class="title">交货地选择</h1>
+        <button class="button button-clear" ng-click="deliveryPlaceConfirm();">确定</button>
+      </ion-header-bar>
+      <ion-header-bar class="bar-subheader cus-select-top">
+        <div class="cus-select-place">
+          <span ng-repeat="item in deliveryPlaceListSelect">{{item.value}}<i class="ion-android-close" ng-click="removeDeliveryPlace(item);"></i></span>
+        </div>
+      </ion-header-bar>
+
+      <ul class="cus-letter-list">
+        <li ng-repeat="item in letterDeliveryList" ng-class="item.class" ng-click="scrollToDeliveryLetter(item.top,$index)">
+          {{item.value}}
+        </li>
+      </ul>
+      <ion-content delegate-handle="mainScroll" ng-style="topDeliveryStyle">
+        <div ng-repeat="item in deliveryPlaceList" class="place-all-list">
+          <div class="cus-radio-title cus-delivery-title">{{item.name}}</div>
+          <div class="cus-place-list">
+            <div class="row"  ng-repeat="item in item.data"
+                 ng-click="deliveryPlaceListClick(item)">
+              <div class="col-80">{{ item.value }}</div>
+              <div class="col-20 place-right">
+                <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+  </script>
+
+
+
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<ion-view title="交收详情">
+
+  <ion-nav-bar class="bar bar-positive" align-title="center">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-buttons side="right">
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </ion-nav-buttons>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 50px;">
+
+        <div class="cus-detail-list">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">{{itemDetail.CategoryShow}}{{itemDetail.BrandShow}}</span>
+                    <span class="cus-tag red-bg">{{itemDetail.formatGoodsType}}</span>
+                </div>
+
+                <!--<div class="col col-right">-->
+                    <!--<span class="scem-font-gray">{{itemDetail.DetailDate}}</span>-->
+                <!--</div>-->
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成&nbsp;&nbsp;交&nbsp;&nbsp;号</div>
+                <div class="col blue-color" ng-click="goOrder()">{{itemDetail.OrderID}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;收&nbsp;&nbsp;号</div>
+                <div class="col blue-color" ng-click="goTake()">{{itemDetail.DeliveryID}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交收方式</div>
+                <div class="col red-color">{{itemDetail.DeliveryTypeShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+                <div class="col">{{itemDetail.SourcePlaceShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+                <div class="col">{{itemDetail.StoreHouseShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;收&nbsp;&nbsp;量</div>
+                <div class="col">{{itemDetail.Quantity}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">成交单价</div>
+                <div class="col">{{(itemDetail.Price) | number:2}}元/吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">货款总额</div>
+                <div class="col">{{(itemDetail.Amount)| number:2}}元</div>
+            </div>
+
+            <!--<div class="row">-->
+                <!--<div class="col col-33">交易手续费</div>-->
+                <!--<div class="col">{{(itemDetail.BuyFee)| number:2}}{{(itemDetail.SellFee)| number:2}}元</div>-->
+            <!--</div>-->
+
+            <div class="row">
+                <div class="col col-33">交货日期</div>
+                <div class="col">{{itemDetail.DelievryDateShow.split(" ")[0]}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">溢短数量</div>
+                <div class="col red-color">{{itemDetail.MoreOrFew}}吨</div>
+            </div>
+
+          <div class="row">
+            <div class="col col-33">仓库地址</div>
+            <div class="col">{{itemDetail.Address}}</div>
+          </div>
+
+          <div class="row">
+            <div class="col col-33">仓库联系人及电话</div>
+            <div class="col">{{itemDetail.StoreContactName}}</div>
+          </div>
+
+
+        </div>
+
+
+    </ion-content>
+  <div class="mallcontact sectionchange" ng-if="isShow">
+    <div class="row">
+
+      <div class="col" ng-click="affirmMoreOrFew(itemDetail.DeliveryID)"><button class="button button-full red-bg-font" >
+        确认溢短
+      </button></div>
+    </div>
+  </div>
+</ion-view>

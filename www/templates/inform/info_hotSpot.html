@@ -1,0 +1,12 @@
+<!--资讯-热点访谈-->
+
+<ul class="cus-list" ng-repeat="hot in infoHotSpotList">
+  <li ng-click="goDetail('tabs.info_detail', hot.ID);">
+    <div class="row cus-icon-text">
+      <div class="col">{{hot.InfoTitle}}</div>
+      <div class="col cus-date">{{hot.Date.substr(0,10)}}</div>
+    </div>
+  </li>
+
+</ul>
+

@@ -1,0 +1,65 @@
+
+<ion-view >
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <button class="button"></button>
+    </ion-nav-bar>
+    <div class="bar bar-header bar-positive">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+        <h1 class="title">资讯详情</h1>
+        <i class="button button-icon iconfont icon-zhuanfa" ng-click="shareInfo()"></i>
+    </div>
+    <ion-content class="scem-bg" >
+        <div class="cus-detail" id="newscontent" >
+
+            <h1 class="cus-detail-title">{{infoDetailLists.InfoTitle}}</h1>
+
+            <div class="time-source"><i class="ion-ios-clock-outline"></i>发布时间:{{infoDetailLists.Date.substr(0,10)}}<i class="ion-ios-photos-outline"></i>来源：上海化交</div>
+          <!--<div class="time-source"><i class="ion-ios-photos-outline"></i>来源：上海化交</div>-->
+
+            <div ng-bind-html="infoDetailList" class="news-content" style="padding: 0 6px;margin-bottom: 240px;" ></div>
+
+          <div class="Detailtip" ng-class="Detailfreetip">
+            <h4>【免责声明】</h4>
+            <p>1、上海化交发布此信息目的在于传播更多信息，与本网站立场无关。</p>
+            <p>2、上海化交不保证该信息（包括但不限于文字、数据及图表）全部或者部分内容的准确性、真实性、完整性、有效性、 及时性、原创性等。</p>
+            <p>3、相关信息并未经过本网站证实，不对您构成任何投资建议，据此操作，风险自担。</p>
+            <p>4、如有侵权请直接与作者联系或书面发函至本公司转达、处理。</p>
+
+          </div>
+
+        </div>
+
+     <div class="share-back hide" ng-class="backdop" ng-click="clearBack()" ></div>
+
+
+
+
+    </ion-content>
+
+
+  <div class="share-back hide" ng-class="backdop" ng-click="clearBack()"></div>
+    <div class="share hide" style="position: absolute;left: 0;bottom: 0;width: 100%;background: #e8e8e8;z-index: 50;height: 30%" ng-class="unshare">
+        <div class="list">
+            <h4>分享至：</h4>
+            <ul>
+                <!--<li><i class="icon iconfont icon-weibo wechat-share" style="background: #4fd328;" ng-click="shareWeiBo()"></i>-->
+                    <!--<div>微博</div></li>-->
+                <li><i class="icon iconfont icon-wechat wechat-share" style="background: #4fd328;" ng-click="shareWeiXin()"></i>
+                    <div>微信好友</div></li>
+                <li><i class="icon iconfont icon-firend wechat-share" style="background: #4fd328;" ng-click="shareFriend()"></i>
+                    <div>微信朋友圈</div></li>
+                <li><i class="icon iconfont icon-fenxiang-QQ wechat-share" style="background: #3ea2de;" ng-click="shareQQ()"></i>
+                    <div>QQ好友</div></li>
+                <li><i class="icon iconfont icon-fenxiang-QQkongjian wechat-share" style="background: #e9c20d;" ng-click="shareQQSpace()"></i>
+                    <div>QQ空间</div></li>
+            </ul>
+        </div>
+        <button class="button button-full button-light Buttonclear" ng-click="clearBack()" style="margin: 0">取消</button>
+    </div>
+
+</ion-view>
+
+
+

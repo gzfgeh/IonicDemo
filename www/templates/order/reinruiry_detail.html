@@ -1,0 +1,112 @@
+<ion-view >
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goHistory()"></button>
+    <h3 class="title">收到的询盘信息</h3>
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </div>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 50px;">
+
+        <div class="cus-detail-list">
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+                    <span class="cus-tag red-bg">{{item.GoodsTypeShow}}</span>
+                </div>
+
+                <div class="col col-right">
+                    <span class="scem-font-gray">{{item.preDate}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+                <div class="col">{{item.SourcePlaceShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装</div>
+                <div class="col ">{{item.PackageStandardShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交易单位</div>
+                <div class="col">{{item.TradeUnitNumber}}吨/批</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+                <div class="col green-color">{{item.Quantity}}批/{{item.QuantityAll}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">最小交收量</div>
+                <div class="col">{{item.MinQuantity}}批/{{item.MinQuantityAll}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+                <div class="col red-color"><span>{{item.Price}}</span>元/吨</div>
+            </div>
+            <div class="row">
+              <div class="col col-33">询盘价格</div>
+              <div class="col green-color"><span>{{item.Enquiry_Price}}</span>元/吨</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-33">询盘总量</div>
+              <div class="col green-color"><span>{{item.Enquiry_Total}}</span>吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交收方式</div>
+                <div class="col">{{item.SettlementMethodShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">仓库地址</div>
+                <div class="col">{{item.Address}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+                <div class="col">{{item.DeliveryPlace}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">仓库名称</div>
+                <div class="col">{{item.StoreHouseShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">联系人-手机</div>
+                <div class="col">{{item.StoreContactName}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">交货日期</div>
+                <div class="col">{{item.DeliveryStartDateShow}}</div>
+            </div>
+
+          <div class="row">
+            <div class="col col-33">买家提货附加费</div>
+            <div class="col">	{{hmReceiveDetailList.FormatExtraLogisticsCost}}元/吨</div>
+          </div>
+
+          <div class="row" ng-if="item.receiveShow && item.receiveShow != 1">
+            <div class="col col-33">到货日期</div>
+            <div class="col">{{hmReceiveDetailList.FormatDeliveryStartDate}} - {{hmReceiveDetailList.FormatDeliveryEndDate}}</div>
+          </div>
+
+          <div class="row" ng-if="item.receiveShow && item.receiveShow != 1">
+            <div class="col col-33">保证金比例</div>
+            <div class="col">	{{hmReceiveDetailList.FormatDepositRate}}</div>
+          </div>
+
+
+
+        </div>
+
+    </ion-content>
+    <div class="mallcontact mallfix">
+        <div class="row">
+            <div class="col col-50"  ng-click="goCancle()"><button class="button button-full button-light">
+                取消
+            </button></div>
+            <div class="col col-50" ng-click="goPay()"><button class="button button-full red-bg-font">
+                确定成交
+            </button></div>
+
+        </div>
+    </div>
+</ion-view>

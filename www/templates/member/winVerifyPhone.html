@@ -1,0 +1,67 @@
+
+    <ion-view title="用户注册" scroll="false" class="scem-bg">
+
+      <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+      </ion-nav-bar>
+
+		<!--<ion-nav-buttons side="right">-->
+		  <!--<button class="button button-clear" ng-click="gotoRegist()">下一步</button>-->
+		<!--</ion-nav-buttons>-->
+
+        <ion-content scroll="false" class="gray-bg">
+            <div class="list cus-reg">
+                <div class="item item-input cus-form">
+                    <i class="iconfont icon-shouji"></i>
+                    <input name="phone" type="tel" ng-model="user.phone" placeholder="需要验证的手机号码" maxlength="11">
+
+                </div>
+
+                <div class="item item-input cus-form">
+
+                    <i class="iconfont icon-yanzhengma"></i>
+
+                    <input name="verifycode" type="tel" ng-model="user.verifycode" placeholder="手机验证码" mixlength="4"  maxlength="6">
+
+                     <span class="item-note">
+                        <button id="verifyButtonId" class="button button-small cus-send-code" ng-click="getCode()" >
+                            获取验证码
+                        </button>
+                </span>
+
+                </div>
+                <div class="item item-input cus-form">
+                    <i class="iconfont icon-wodexiaoxi"></i>
+                  <input type="text" ng-model="user.email" placeholder="邮箱(可选)">
+                </div>
+                <div class="item item-input cus-form">
+                    <i class="iconfont icon-shuruyonghuming"></i>
+                  <input type="text" ng-model="user.name" placeholder="用户名">
+                </div>
+
+                <div class="item item-input cus-form">
+                    <i class="iconfont icon-shurumima"></i>
+                  <input type="password" ng-model="user.password" placeholder="密码">
+                </div>
+
+                <div class="item item-input cus-form">
+                    <i class="iconfont icon-quedingmima"></i>
+                  <input type="password" ng-model="user.verifyPwd" placeholder="确认密码">
+                </div>
+
+
+
+
+
+
+
+                <div class="cus-btn-col">
+                  <button class="button button-block button-assertive padding-horizontal" ng-click="register()">
+                    确认
+                  </button>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+
+

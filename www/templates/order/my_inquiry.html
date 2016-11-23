@@ -1,0 +1,65 @@
+<ion-view  class="gray-bg">
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <h3 class="title">我的询盘</h3>
+  </div>
+
+    <!--<ion-header-bar class= " bar-subheader mytrade-subheader"  ng-show="hide">-->
+        <!--<div class="row text-center white-bg">-->
+            <!--<span class="col" ng-click="classifyMenuClick();" ng-class="menuClass1">分类<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="selectPlace();" ng-class="menuClass2">产地<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="selectDeliveryPlace();" ng-class="menuClass3">交货地<i class="ion-android-arrow-dropdown"></i></span>-->
+            <!--<span class="col" ng-click="sortMenuClick();" ng-class="menuClass4">排序<i class="ion-android-arrow-dropdown"></i></span>-->
+        <!--</div>-->
+
+    <!--</ion-header-bar>-->
+  <ion-header-bar class= " bar-subheader mytrade-subheader">
+    <div class="row text-center">
+      <!--<div class="col"><div class="col-50" ng-click="tabClick(false)" ng-class="{true:'active'}[!onClickedFirstTap]"  >我是买家</div></div>-->
+      <!--<div class="col"><div class="col-50" ng-click="tabClick(true)"  ng-class="{true:'active'}[onClickedFirstTap]" >我是卖家</div></div>-->
+      <div class="col"><div class="col-50" ng-click="TabMySpotClick()" ng-class="Tabclass1" >现货</div></div>
+      <div class="col"><div class="col-50" ng-click="TabMyPreSaleClick()" ng-class="Tabclass2" >预售</div></div>
+
+    </div>
+  </ion-header-bar>
+    <ion-content scroll="true" class="gray-bg has-header">
+     <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down" ></ion-refresher>
+      <ion-list >
+        <!--<ion-item ng-click="goMyInquiryDetail(item)"  ng-repeat="item in list | orderBy:'-Enquiry_REC_CREATETIMEShow'" style="white-space: normal">-->
+        <ion-item ng-click="goMyInquiryDetail(item)"  ng-repeat="item in list" style="white-space: normal">
+
+          <div class="trade-list row" style="padding: 0" >
+              <div class="col col-80"style="padding: 0">
+            <span ng-class="{0:'settlement-state',1:'settlement-border'}[item.GoodsType]">{{item.GoodsType == 0?"现货":"预售"}}</span>
+            {{item.CategoryShow}}&nbsp;-&nbsp;{{item.BrandShow}}&nbsp;-&nbsp;{{item.SourcePlaceShow}}</div>
+            <div class="item-note col col-20" style="text-align: right;padding: 0">{{item.preDate}}</div>
+          </div>
+
+          <div class="red-color" style="font-size: 18px">{{(item.Price == "-"? item.Enquiry_Price: item.Price)}}元/吨
+            <span class="gray-color" style="font-size: 14px;">
+              {{item.ResidualWeight}}吨
+            </span>
+
+            <div class="item-note green-color">
+              {{item.TradeStatusShow}}
+
+            <div class="item-note green-color" ng-class="{1:'green-color', 0:'blue-color'}[item.Enquiry_Status]">
+              {{item.Enquiry_StatusShow}}
+            </div>
+          </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+
+      <ion-infinite-scroll ng-if="moreData" immediate-check="false" spinner="dots" on-infinite="doLoadMore()" distance="1%" >
+      </ion-infinite-scroll>
+    <div class="no-data-col" ng-if="listStatus">
+        <img src="img/no_trade_data.png"/>
+        <p>没有搜到你想要的内容</p>
+        <div>世界那么大，我想再看看</div>
+      </div>
+    </ion-content>
+
+
+</ion-view>

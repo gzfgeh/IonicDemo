@@ -1,0 +1,27 @@
+
+<ion-view view-title="消息中心">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content class="scem-bg">
+
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down"></ion-refresher>
+      <div class="list card" ng-repeat="obj in model">
+        <div class="item item-text-wrap">
+          <p>{{obj.messageContent}}</p>
+        </div>
+        <div style="float: right;margin-top: 5px;">
+          <p>{{obj.recModifytime}}</p>
+        </div>
+      </div>
+
+      <ion-infinite-scroll immediate-check="false" ng-if="needLoadMore" spinner="dots" on-infinite="loadMore()" distance="5%" ></ion-infinite-scroll>
+
+      <!--<ion-spinner icon="bubbles" class="spinner-dark" style="text-align: center;top:50%;left:50%;position: absolute;" ng-if="showLoading"></ion-spinner>-->
+    </ion-content>
+</ion-view>
+
+
+

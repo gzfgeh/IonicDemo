@@ -1,0 +1,118 @@
+<!--转货权申请页面 暂时不用-->
+<ion-view title="转货权">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">
+                <i class="icon ion-ios-telephone"></i>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+        <div class="cus-detail-list" style="padding-right: 16px;">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">N-MPHM-160-PP 均聚纤维</span>
+                    <span class="cus-tag red-bg">现货</span>
+                </div>
+
+                <div class="col col-right">
+                    <span class="scem-font-gray">7分钟前</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成&nbsp;&nbsp;交&nbsp;&nbsp;号</div>
+                <div class="col blue-color">CJ1609070012</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">可提货数量</div>
+                <div class="col">11批 / 11吨</div>
+            </div>
+
+            <div class="row border-row">
+                <div class="col col-33">最小交收量</div>
+                <div class="col">11批</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">提货数量</div>
+                <div class="col">
+                    <input type="text" class="cus-input-half">
+                    批 / 0 吨
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">转让日期</div>
+                <div class="col">
+                    <input type="text" class="cus-input-half">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">货权转入方</div>
+                <div class="col">
+                   某某某
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">仓库编号</div>
+                <div class="col">
+                    <input type="text" class="cus-input">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">联系人姓名</div>
+                <div class="col">
+                    <input type="text" class="cus-input-half">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">联系电话</div>
+                <div class="col">
+                    <input type="number"  class="cus-input">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">备注</div>
+                <div class="col ">
+                    <textarea name="" id="" cols="30" rows="10" class="cus-input"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">收费项目</div>
+                <div class="col ">
+                    <input type="text" class="cus-input" style="height: 155px">
+                </div>
+            </div>
+            <div class="row text-center ">
+                <div class="col" style="background: #fdefef;color: #ea5251;margin: 16px 0px 0 16px;padding:10px 10%">出库费、仓储费、货权转移费等相关费用由货权转入方承担</div>
+            </div>
+        </div>
+        <div class="mallcontact">
+            <div class="row">
+                <div class="col col-50"  ng-click="goPay()"><button class="button button-full button-light">
+                    取消
+                </button></div>
+                <div class="col col-50" ng-click="goPay()"><button class="button button-full red-bg-font" >
+                    提交申请
+                </button></div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,94 @@
+<ion-view title="支付货款">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">
+              <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+        <div class="cus-detail-list cus-pay-list">
+
+            <div class="row">
+                <div class="col">
+                  <span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+                  <span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成交数量</div>
+                <div class="col">{{item.Weight}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">成交单价</div>
+                <div class="col">{{item.Price|number:2}}元/吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">总&nbsp;&nbsp;货&nbsp;&nbsp;款</div>
+                <div class="col">{{item.Amount|number:2}}元</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">手&nbsp;&nbsp;续&nbsp;&nbsp;费</div>
+                <div class="col">{{item.TwoDecimalFee |number:2}}元</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">手续费标准</div>
+                <div class="col">{{item.FormatFeeRate}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">扣款总额</div>
+                <div class="col red-color">{{item.Amount+item.TwoDecimalFee|number:2}}元</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">支付密码</div>
+                <div class="col red-color" style="font-size: 12px;color:#999;padding-right: 16px;" ng-if="!item.paymentPwdStatus">
+                  <i class="icon ion-information-circled"></i>&nbsp;初次支付需登录官网设置登录密码</div>
+            </div>
+
+            <div class="row pay-password" ng-click="keyboardPayShow();" >
+                <div class="col" ng-repeat="item in inputPass"><input type="password" ng-model="item.value"  disabled ng-blur="findBlur()"/></div>
+            </div>
+
+
+            <div class="row" style="padding-right:16px;">
+                <div class="col col-67" style="color: #999">是否使用优惠券抵用手续费</div>
+                <div class="col-33">
+                    <label class="toggle toggle-assertive"style="float: right">
+                    <input type="checkbox" ng-model="item.HasCoupon">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label></div>
+            </div>
+
+          <div class="row text-center ">
+            <div class="col" style="background: #fdefef;color: #ea5251;margin: 16px 16px 0 16px">当前可用优惠券余额：<span class="red-color">{{item.CouponBalance}}元</span></div>
+          </div>
+        </div>
+
+        <div class="mallcontact" ng-class="test">
+            <div class="row">
+                <div class="col col-50"><button class="button button-full button-light" ng-click="goBack()">
+                    取消
+                </button></div>
+                <div class="col col-50"><button class="button button-full red-bg-font" ng-click="gopaySuccess()">
+                    确认支付
+                </button></div>
+            </div>
+        </div>
+        <div class="cus-keyboard-space" ng-class="keyboardHide"></div>
+
+    </ion-content>
+
+
+
+</ion-view>

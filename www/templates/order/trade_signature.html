@@ -1,0 +1,101 @@
+<ion-view title="提交签收">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">
+                <i class="icon ion-ios-telephone"></i>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail ">
+
+        <div class="cus-detail-list white-bg" >
+
+
+
+            <!--<div class="row">-->
+                <!--<div class="col">-->
+                  <!--<span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>-->
+                  <!--<span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>-->
+                <!--</div>-->
+
+                <!--<div class="col col-right">-->
+                    <!--<span class="scem-font-gray">{{item.preDate}}</span>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="row " style="border-bottom: 8px solid #f3f3f3">-->
+                <!--<div class="col col-33">上传签收单</div>-->
+                <!--<div class="col "style="margin-right: 16px;">-->
+                    <!--<div class="file-box" style="position:relative;width:100%">-->
+                    <!--<form action="" method="post" enctype="multipart/form-data">-->
+                        <!--<input type='text' name='textfield' id='textfield' class='txt' style="height:33px; border:1px solid #cdcdcd; width:80%;border-radius: 5px 0 0 5px"/>-->
+                        <!--<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" style=" position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:100% "/>-->
+                        <!--<input type="submit" name="submit" class="btn" value="上传" style="position: absolute;right: 0;top: 0;width: 20%;height: 33px;border-radius: 0 5px 5px 0;background: #fdefef;color: #ea5251;border-color: #ea5251"/>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+          <div class="row " style="border-bottom: 8px solid #f3f3f3 ;">
+          <div class="col col-33 " style="font-size: 20px;color: #333;">溢短调整</div>
+          </div>
+
+            <div class="row" style="border-bottom: 1px solid #f2f2f2">
+                <div class="col col-33" style="text-align: center;">交收单号</div>
+                <div class="col col-33" style="text-align: center;">交收数量（吨）</div>
+                <div class="col col-33" style="text-align: center;">实收数量（吨）</div>
+            </div>
+          <!--track by $index-->
+
+
+                <div ng-repeat="data in list" class="row cus-trade-table" style="border-bottom: 1px solid #f2f2f2;">
+                  <div class="col col-33">{{data.DeliveryID}}</div>
+                    <div class="col col-33">{{data.Quantity}}</div>
+                    <div class="col col-33">
+                      <input   type="number" class="cus-input" ng-model="data.TakenQuantity" value="5" style="text-align: center" ng-click="checkBlur()" ng-blur="findBlur()" ng-pattern="/^\d+(\.\d{1,6})?$/">
+
+                    </div>
+                </div>
+
+            <div class="row" style="margin-top: 10px">
+                <div class="col col-33">传&nbsp;&nbsp;真&nbsp;&nbsp;号</div>
+                <div class="col">
+                    021-51554572，51550098
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">客服电话</div>
+                <div class="col">
+                    <a href="tel:4007209209" style="text-decoration: none"> 4007-209-209-3</a>
+                </div>
+            </div>
+
+            <!--<div class="row text-center ">-->
+                <!--<div class="col" style="background: #fdefef;color: #ea5251;margin: 16px 16px 0 16px">如有溢短，请修改实收数量</div>-->
+            <!--</div>-->
+            <div class="row take-row">
+                <div class="col"><span>请至官方网站下载《提交签收信息申报单》模板，完整、准确填写并加盖公章、合同章等实物印章，传真至上海化交物流交收部。</span></div>
+            </div>
+        </div>
+
+
+
+        <div class="mallcontact" ng-class="test">
+            <div class="row">
+                <div class="col col-50"  ng-click="goBack()"><button class="button button-full button-light">
+                    取消
+                </button></div>
+                <div class="col col-50" ng-click="goPay()"><button class="button button-full red-bg-font " >
+                    提交签收
+                </button></div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

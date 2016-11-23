@@ -1,0 +1,131 @@
+<ion-view id="info" class="gray-bg">
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">数据资讯</h1>
+    </div>
+
+    <!--PE/PP/PVC选择-->
+    <ion-header-bar class="bar-subheader cus-subheader cus-info-header">
+      <div class="row text-center info-title white-bg" >
+        <div class="col" ng-class="item.className" ng-repeat="item in tabList" item="item" ng-click="tabClick(item.catogredId);">
+          {{item.name}}
+        </div>
+      </div>
+
+
+      <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" class="scroll-tab" active-slide="myActiveSlide" class="white-bg">
+      <ion-slide on-slide-changed="slideHasChanged(index)">
+        <div class="row white-bg">
+          <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index<3&&!(item.childList)">
+            {{item.name}}
+          </div>
+          <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index<4&&item.childList">
+            {{item.name}}
+            <i class="ion-android-arrow-dropdown"></i>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide on-slide-changed="slideHasChanged(index)">
+        <div class="row white-bg" >
+          <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index>3&&item.childList">
+            {{item.name}}
+            <i class="ion-android-arrow-dropdown"></i>
+          </div>
+          <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index>3&&!(item.childList)">
+            {{item.name}}
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box >
+
+
+
+
+
+    <div class="cus-tab-icon" ng-click="allMenuSwitch()">
+      <i class="ion-ios-plus-empty" ng-hide="showAllMenu" ></i>
+      <i class="ion-ios-close-empty" ng-show="showAllMenu"></i>
+    </div>
+
+    <div class="cus-all-menu cus-info-menu hide"  ng-class="showAllMenuClass"style="top: 95px;" >
+      <div class="row">
+        <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index<4">
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" ng-class="item.className" ng-repeat="item in typeList" item="item" ng-click="columnChange(item);" ng-if="$index>3">
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" ng-class="item.className" ng-repeat="item in typeList[3].childList" item="item" ng-click="columnChange(item);" ng-if="$index<3">
+          <span>资讯 | {{item.value}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" ng-class="item.className" ng-repeat="item in typeList[4].childList" item="item" ng-click="columnChange(item);" ng-if="$index<2">
+          <span>数据 | {{item.value}}</span>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+
+    <div class="cus-all-menu cus-classify-list hide" ng-class="classifyClass" style="top: 95px;">
+      <div class="row" ng-repeat="item in typeList[3].childList" ng-click="classifyClick($index)">
+        <div class="col-80">{{item.value}}</div>
+        <div class="col-20 place-right">
+          <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="cus-all-menu cus-classify-list hide" ng-class="sortClass" style="top: 95px;">
+      <div class="row" ng-repeat="item in typeList[4].childList" ng-click="sortClick($index)">
+        <div class="col-80">{{item.value}}</div>
+        <div class="col-20 place-right">
+          <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+        </div>
+      </div>
+    </div>
+
+
+  </ion-header-bar>
+
+  <!--//资讯上方的滑动标题-->
+  <ion-content padding="true" class="has-header has-subheader scroll-tab-content" style="top:140px;">
+
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" data-tap-disabled="true"></ion-refresher>
+
+      <div class="cus-shadow" ng-show="showAllMenu" ng-click="hideAllMenu();"></div>
+
+
+
+      <!--页面上的轮播图-->
+      <!--<img src="img/news_banner.jpg" width="100%">-->
+      <div class="box blue" ng-click="goImageDetail('tabs.info_detail', theImageCategoryID);">
+        <img src={{imageList}} width="100%"></div>
+
+      <!--KPI滑动-->
+      <div style="height:50px;overflow: hidden;width:100%;" id="cusScroll">
+        <div class="cus-main-second" on-touch="$event.stopPropagation();">
+          <div on-touch="$event.stopPropagation();">
+                  <span  ng-repeat="itemKPI in KPIList" class="cus-col">
+                    {{itemKPI.mqType}}<br/>
+                    <span class="red-color" ng-if="itemKPI.up==true"><span>{{itemKPI.mqPrice}}</span>↑</span>
+                    <span class="green-color" ng-if="itemKPI.up==false"><span>{{itemKPI.mqPrice}}</span>↓</span>
+                    <span class="gray-text-color" ng-if="itemKPI.zero==true"><span>{{itemKPI.mqPrice}}</span></span>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-include="mainHtml" class="white-bg"></div>
+    <ion-infinite-scroll ng-if="loadmore" immediate-check="false" spinner="dots" on-infinite="doInfoLoadMore()" distance="1%" ></ion-infinite-scroll>
+    <ion-spinner icon="bubbles" class="spinner-dark" style="text-align: center;top:50%;left:48%;position: absolute;" ng-if="showLoading"></ion-spinner>
+
+  </ion-content>
+
+</ion-view>
+

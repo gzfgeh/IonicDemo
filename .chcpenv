@@ -1,4 +1,4 @@
 {
-  "content_url": "http://192.168.1.108:8889",
-  "config_url": "http://192.168.1.108:8889/chcp.json"
+  "content_url": "https://ba7f4b49.ngrok.io",
+  "config_url": "https://ba7f4b49.ngrok.io/chcp.json"
 }

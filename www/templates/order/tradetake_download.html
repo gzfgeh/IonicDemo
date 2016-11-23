@@ -1,0 +1,122 @@
+<!--<ion-view title="申请自提交收">-->
+
+    <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+        <!--<ion-nav-back-button></ion-nav-back-button>-->
+        <!--<ion-nav-buttons side="right">-->
+            <!--<button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">-->
+                <!--<i class="icon ion-ios-telephone"></i>-->
+            <!--</button>-->
+        <!--</ion-nav-buttons>-->
+    <!--</ion-nav-bar>-->
+
+<ion-view  class="gray-bg">
+    <div class="bar bar-header bar-positive">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="goHistory()"></button>
+        <h3 class="title">我的询盘</h3>
+    </div>
+
+    <ion-content padding="true" class="has-header cus-col-detail">
+
+        <div class="cus-detail-list" style="padding-right: 16px;">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">{{item.CategoryLeaf}} {{item.Brand}}</span>
+                    <!--<span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span> GetSelfPickInfo返回方法里没有GoodsType字段-->
+                </div>
+
+                <div class="col col-right">
+                    <span class="scem-font-gray"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-33">成&nbsp;&nbsp;交&nbsp;&nbsp;号：</div>
+                <div class="col blue-color">{{item.OrderID}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">可提货数量：</div>
+                <div class="col">{{item.TradeNumber}}批 / {{item.SumQuantity}}吨</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">提货数量：</div>
+                <div class="col">
+                    {{item.Quantity}}批 / {{item.QuantityTon}}吨
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">生效日期：</div>
+                <div class="col">
+                    {{item.StartDate  | date:'yyyy/MM/dd' }}<span style="display:inline-block;width: 10%;text-align: center">~</span>{{item.EndDate  | date:'yyyy/MM/dd' }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">运输公司：</div>
+                <div class="col">
+                    {{item.LogisticsCorp}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">司机身份证：</div>
+                <div class="col">
+                    {{item.DriverIDNumber}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">车牌号：</div>
+                <div class="col">
+                    {{item.License}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">联系电话：</div>
+                <div class="col">
+                    {{item.ContactTel}}
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">提货人姓名：</div>
+                <div class="col">
+                    {{item.ContactName}}
+                </div>
+            </div>
+
+            <!--<div class="row">-->
+            <!--<div class="col col-33">下家申请单</div>-->
+            <!--<div class="col ">-->
+            <!--<div class="file-box" style="position:relative;width:100%">-->
+            <!--<form action="" method="post" enctype="multipart/form-data">-->
+            <!--<input type='text' name='textfield' id='textfield' class='txt' style="height:33px; border:1px solid #cdcdcd; width:80%;border-radius: 5px 0 0 5px"/>-->
+            <!--<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value"/>-->
+            <!--<input type="submit" name="submit" class="btn" value="上传" style="position: absolute;right: 0;top: 0;width: 20%;height: 33px;border-radius: 0 5px 5px 0;background: #fdefef;color: #ea5251;border-color: #ea5251"/>-->
+            <!--</form>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="row">
+                <div class="col col-33">备注：</div>
+                <div class="col" style="white-space: normal;">
+                    {{item.Remark}}
+                </div>
+            </div>
+        </div>
+        <div class="mallcontact sectionchange">
+            <div class="row">
+                <div class="col"  ng-click="goBack()"><button class="button button-full red-bg-font">
+                    关闭
+                </button></div>
+            </div>
+
+    </ion-content>
+</ion-view>

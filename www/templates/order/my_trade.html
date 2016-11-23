@@ -1,0 +1,121 @@
+<!--<ion-view view-title="我的成交" class="gray-bg">-->
+
+    <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+        <!--<ion-nav-back-button ng-click="goBack()"></ion-nav-back-button>-->
+    <!--</ion-nav-bar>-->
+  <ion-view  class="gray-bg">
+    <div class="bar bar-header bar-positive">
+      <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+      <h3 class="title">我的成交</h3>
+<button class="button button-icon"  ng-click="showState()" ng-model="textSelect" ng-if="isShowOrderType">{{textSelect}}<i class="icon ion-arrow-down-b" ></i>
+
+</button>
+
+    </div>
+
+        <ion-header-bar class= " bar-subheader mytrade-subheader">
+<div class="row text-center">
+    <!--<div class="col"><div class="col-50" ng-click="tabClick(false)" ng-class="{true:'active'}[!onClickedFirstTap]"  >我是买家</div></div>-->
+    <!--<div class="col"><div class="col-50" ng-click="tabClick(true)"  ng-class="{true:'active'}[onClickedFirstTap]" >我是卖家</div></div>-->
+
+  <div class="col"><div class="col-50" ng-click="TaboneClick()" ng-class="Tabclass1" >现货</div></div>
+  <div class="col"><div class="col-50" ng-click="TabtwoClick()" ng-class="Tabclass2" >预售</div></div>
+
+  <!--<div class="col" ng-click="TabthreeClick()" ng-class="Tabclass3" >全部</div>-->
+</div>
+          <div class="selectState" ng-class="selectState" >
+            <div ng-click="tabClick(false)" ng-class="{true:'active'}[!onClickedFirstTap]" >买家</div>
+            <div ng-click="tabClick(true)"  ng-class="{true:'active'}[onClickedFirstTap]">卖家</div>
+          </div>
+        </ion-header-bar>
+
+
+
+
+        <ion-content scroll="true" class="gray-bg has-header" >
+
+          <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down" ></ion-refresher>
+            <div class="row text-center white-bg" ng-show="hide">
+            <span class="col" ng-click="classifyMenuClick();" ng-class="menuClass1">分类<i class="ion-android-arrow-dropdown"></i></span>
+            <span class="col" ng-click="selectPlace();" ng-class="menuClass2">产地<i class="ion-android-arrow-dropdown"></i></span>
+            <span class="col" ng-click="selectDeliveryPlace();" ng-class="menuClass3">交货地<i class="ion-android-arrow-dropdown"></i></span>
+            <span class="col" ng-click="sortMenuClick();" ng-class="menuClass4">排序<i class="ion-android-arrow-dropdown"></i></span>
+
+            </div>
+
+
+            <div class="cus-all-menu">
+            <div class="cus-classify-list hide" ng-class="classifyClass">
+            <div class="row" ng-repeat="item in classifyList" ng-click="classifyClick($index)">
+            <div class="col-80">{{item.name}}</div>
+            <div class="col-20 place-right">
+            <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+            </div>
+            </div>
+
+            </div>
+
+            <div class="cus-classify-list hide" ng-class="sortClass">
+            <div class="row" ng-repeat="item in sortList" ng-click="sortClick($index)">
+            <div class="col-80">{{item.name}}</div>
+            <div class="col-20 place-right">
+            <i class="iconfont icon-xuanzhong red-color" ng-show="item.checked"></i>
+            </div>
+            </div>
+
+            </div>
+            </div>
+        <div class="cus-shadow hide" ng-class="shadowClass" ng-click="shadowClick();" style="top: 44px;z-index: 10;"></div>
+
+
+          <ion-list ng-if="!onClickedFirstTap">
+            <ion-item ng-click="goMySellOfferDetail(item)" ng-repeat="item in list track by $index">
+
+                <div class="trade-list row" style="padding: 0">
+                    <div class="col col-80"style="padding: 0;white-space: normal">
+                <span ng-class="{0:'settlement-state',1:'settlement-border'}[item.GoodsType]">{{item.GoodsType == 0?"现货":"预售"}}</span>
+                {{item.CategoryShow}}&nbsp;-&nbsp;{{item.BrandShow}}&nbsp;-&nbsp;{{item.SourcePlaceShow}}</div>
+                <div class="item-note col col-20" style="padding: 0;text-align: right">{{item.preDate}}</div>
+              </div>
+
+              <div class="red-color" style="font-size: 18px"> {{item.Price}}元/吨 <span class="gray-color" style="font-size: 14px;">{{item.Weight}}吨
+                </span>
+                <div class="item-note green-color">
+                  {{item.TradeStatusShow}}
+                </div>
+              </div>
+            </ion-item>
+          </ion-list>
+
+            <ion-list ng-if="onClickedFirstTap">
+                <ion-item ng-click="goMySellOfferDetail(item)"  ng-repeat="item in list track by $index">
+
+                    <div class="trade-list row" style="padding: 0">
+                        <div class="col col-80"style="padding: 0;white-space: normal">
+                        <span ng-class="{0:'settlement-state',1:'settlement-border'}[item.GoodsType]">{{item.GoodsType == 0?"现货":"预售"}}</span>
+                        {{item.CategoryShow}}&nbsp;-&nbsp;{{item.BrandShow}}&nbsp;-&nbsp;{{item.SourcePlaceShow}}</div>
+                        <div class="item-note col col-20" style="padding: 0;text-align: right">{{item.preDate}}</div>
+                    </div>
+
+                    <div class="red-color" style="font-size: 18px"> {{item.Price}}元/吨 <span class="gray-color" style="font-size: 14px;">{{item.Weight}}吨
+                      </span>
+                        <div class="item-note green-color">
+                            {{item.TradeStatusShow}}
+                        </div>
+                    </div>
+                </ion-item>
+            </ion-list>
+          <ion-infinite-scroll ng-if="moreData" immediate-check="false" spinner="dots" on-infinite="doLoadMore()" distance="1%" >
+
+          </ion-infinite-scroll>
+      <div class="no-data-col" ng-if="list.length == 0">
+        <img src="img/no_trade_data.png"/>
+        <p>没有搜到你想要的内容</p>
+        <div>世界那么大，我想再看看</div>
+      </div>
+    </ion-content>
+
+
+
+
+</ion-view>

@@ -1,0 +1,83 @@
+<ion-view title="报盘详情" id="mall" class=" ">
+
+  <ion-nav-bar class="bar bar-positive" align-title="center">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-buttons side="right">
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </ion-nav-buttons>
+
+  <ion-content padding="true" class="has-header cus-col-detail">
+    <div class="cus-detail-list" style="padding-right: 16px;">
+      <div class="row">
+        <div class="col">
+          <span class="cus-category">{{mallObj.CategoryShow}} {{mallObj.BrandShow}}</span>
+          <span class="cus-tag red-bg">{{mallObj.LeadsStatusShow}}</span>
+        </div>
+        <div class="col col-right">
+        <span class="scem-font-gray">{{mallObj.REC_CREATETIMEShow.split(" ")[0]}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-33">类型</div>
+        <div class="col" style="padding-right: 16px;">{{mallObj.GoodsTypeShow}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">投放企业</div>
+        <div class="col" style="padding-right: 16px;">{{mallObj.FirmShowName}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+        <div class="col">{{mallObj.SourcePlaceShow}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+        <div class="col">{{hmDetailList.TotalWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">可&nbsp;&nbsp;售&nbsp;&nbsp; 量</div>
+        <div class="col">{{mallObj.ResidualWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">最小交收量</div>
+        <div class="col">{{hmDetailList.MinWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交易单位</div>
+        <div class="col "><span class="price-num">{{mallObj.TradeUnitNumber}}吨/批</span></div>
+      </div>
+      <div class="row">
+        <div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+        <div class="col price"><span class="price-num">{{mallObj.Price}}元/吨</span></div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+        <div class="col">{{mallObj.DeliveryPlace}}-{{hmDetailList.WHAddress}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">联&nbsp;&nbsp;系&nbsp;&nbsp;人</div>
+        <div class="col">{{hmDetailList.StoreContactName}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交收方式</div>
+        <div class="col">{{mallObj.SettlementMethodShow}}</div>
+      </div>
+      <div class="row" ng-if="mallObj.showPercent">
+        <div class="col col-33">到货日期</div>
+        <div class="col">{{hmDetailList.FormatDeliveryStartDate}} - {{hmDetailList.FormatDeliveryEndDate}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">买家提货附加费</div>
+        <div class="col">	{{hmDetailList.FormatExtraLogisticsCost}}元/吨</div>
+      </div>
+      <div class="row" ng-if="mallObj.showPercent">
+        <div class="col col-33">保&nbsp;&nbsp;证&nbsp;&nbsp;金</div>
+        <div class="col">	{{hmDetailList.FormatDepositRate}}</div>
+      </div>
+    </div>
+
+  </ion-content>
+
+
+</ion-view>

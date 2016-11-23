@@ -1,0 +1,41 @@
+
+<ion-view  id="tabs" class="tabs-scem">
+    <ion-tabs class="tabs-stable tabs-icon-top tabs-color-positive {{hideTabs}}" id="tabs-top">
+        <ion-tab  badge=mainBadgeValue badge-style="badge-assertive" title="首页" icon-on="iconfont icon-shouyelogo" icon-off="iconfont icon-shouyelogo"  id="tabs-main" class=" " ng-click="goMain()">
+            <ion-nav-view name="tab_top"></ion-nav-view>
+        </ion-tab>
+        <ion-tab   badge=mallBadgeValue badge-style="badge-assertive" title="商城" icon-on="iconfont icon-shangcheng"  icon-off="iconfont icon-shangcheng" id="tabs-mall" class=" " ng-click="goMall()">
+            <ion-nav-view name="tab_mall"></ion-nav-view>
+        </ion-tab>
+        <ion-tab  badge=tradeBadgeValue badge-style="badge-assertive" title="交易" icon-on="iconfont icon-dingdan"  icon-off="iconfont icon-dingdan"  id="tabs-order" class=" " ng-click="goOrder()">
+            <ion-nav-view name="tab_order"></ion-nav-view>
+        </ion-tab>
+		<ion-tab  badge=msgBadgeValue badge-style="badge-assertive" title="资讯" icon-on="iconfont icon-zixun"  icon-off="iconfont icon-zixun"  id="tabs-info" class=" " ng-click="goInfo()">
+            <ion-nav-view name="tab_info"></ion-nav-view>
+        </ion-tab>
+		<ion-tab title="我"  icon-on="iconfont icon-wo"  icon-off="iconfont icon-wo"  badge=mineBadgeValue badge-style="badge-assertive" id="tabs-user" class=" " ng-click="goUser()">
+            <ion-nav-view name="tab_user"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>
+
+
+<!--<ion-view  id="tabs" class="tabs-scem">-->
+  <!--<ion-tabs class="tabs-stable tabs-icon-top tabs-color-positive {{hideTabs}}" id="tabs-top">-->
+    <!--<ion-tab ng-controller="mainCtrl" badge=mainBadgeValue badge-style="badge-assertive" title="首页" icon-on="iconfont icon-shouyelogo" icon-off="iconfont icon-shouyelogo" href="#/tabs/top" id="tabs-main" class=" ">-->
+      <!--<ion-nav-view name="tab_top"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <!--<ion-tab ng-controller="mallCtrl" badge=mallBadgeValue badge-style="badge-assertive" title="商城" icon-on="iconfont icon-shangcheng"  icon-off="iconfont icon-shangcheng" href="#/tabs/mall" id="tabs-mall" class=" ">-->
+      <!--<ion-nav-view name="tab_mall"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <!--<ion-tab ng-controller="orderCtrl" badge=tradeBadgeValue badge-style="badge-assertive" title="交易<span class='cus-circle'></span>" icon-on="iconfont icon-dingdan"  icon-off="iconfont icon-dingdan" href="#/tabs/order" id="tabs-order" class=" ">-->
+      <!--<ion-nav-view name="tab_order"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <!--<ion-tab ng-controller="infoCtrl" badge=msgBadgeValue badge-style="badge-assertive" title="资讯" icon-on="iconfont icon-zixun"  icon-off="iconfont icon-zixun" href="#/tabs/info" id="tabs-info" class=" ">-->
+      <!--<ion-nav-view name="tab_info"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <!--<ion-tab  ng-controller="userCtrl" badge=mineBadgeValue badge-style="badge-assertive" title="我"  icon-on="iconfont icon-wo"  icon-off="iconfont icon-wo" href="#/tabs/user"  id="tabs-user" class=" ">-->
+      <!--<ion-nav-view name="tab_user"></ion-nav-view>-->
+    <!--</ion-tab>-->
+  <!--</ion-tabs>-->
+<!--</ion-view>-->

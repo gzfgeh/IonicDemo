@@ -1,0 +1,91 @@
+<ion-view title="下单">
+
+  <ion-nav-bar class="bar bar-positive" align-title="center">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-buttons side="right">
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </ion-nav-buttons>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="background: #f0f1f5;margin-bottom: 50px;">
+
+      <div class="cus-detail-list white-bg" style="padding-right: 16px;">
+        <div class="row">
+          <div class="col">
+            <span class="cus-category">{{mallOrderObj.CategoryShow}} {{mallOrderObj.BrandShow}}</span>
+            <span class="cus-tag red-bg">{{mallOrderObj.GoodsTypeShow}}</span>
+          </div>
+          <div class="col col-right">
+            <span class="scem-font-gray">{{mallOrderObj.REC_CREATETIMEShow.split(" ")[0]}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-33">数     &nbsp;&nbsp; 量</div>
+          <div class="col">{{mallOrderObj.ResidualQuantity}}批/{{mallOrderObj.ResidualQuantity*mallOrderObj.TradeUnitNumber|number:pointLength}}吨</div>
+        </div>
+        <div class="row">
+          <div class="col col-33">最小交收量</div>
+          <div class="col">{{mallOrderObj.MinQuantity}}批/{{mallOrderObj.MinQuantity*mallOrderObj.TradeUnitNumber|number:pointLength}}吨</div>
+        </div>
+        <div class="row">
+          <div class="col col-33">交易单位</div>
+          <div class="col">{{mallOrderObj.TradeUnitNumber}}吨/批</div>
+        </div>
+        <div class="row">
+          <div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+          <div class="col price"><span class="price-num">{{mallOrderObj.Price|number:2}}元/吨</span></div>
+        </div>
+      </div>
+
+
+      <div class="cus-detail-list white-bg"  style="padding:0 16px;margin-top: 10px">
+        <div class="row " style="margin-bottom: 0">
+          <div class="col col-33" style="padding-left: 0">成交价格</div>
+          <div class="col" style="padding-left: 0">
+            <input type="tel" class="cus-input-half text-center" style="width: 80%;background: #e2e2e2;color: black;" value="{{mallOrderObj.Price}}" readonly="true"> 元/吨
+          </div>
+        </div>
+
+        <div class="row " >
+          <div class="col col-33" style="padding-left: 0">成交数量</div>
+          <div class="col" style="padding-left: 0">
+            <input type="tel" class="cus-input-half text-center" style="width: 80%;" ng-model="deal.orderCount" ng-readonly="enableEdit" ng-click="checkBlur()" ng-blur="findBlur()"> 批
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row white-bg" style="padding:16px;margin-top: 10px" ng-show="showOrderPrice">
+
+        <div class="col" style="white-space: nowrap;text-align: right">
+          共{{deal.orderCount}}批{{theWeight}}吨 合计: <span style="display: inline-block;font-size: 18px;color: #ea5251;">{{theMoney|number:2}}元</span>
+        </div>
+
+
+      </div>
+      <div class="row text-center" style="background: #fdefef;color: #ea5251;font-size: 14px;padding: 0" ng-show="showOrderPrice">
+        <div class="col" style="padding: 8px 0"><span class="deposit">保证金金额：</span><br/>{{hmPriceList.Deposit|number:2}}元</div>
+        <div class="col" style="padding: 8px 0" ><span class="deposit">保证金收费标准：</span><br/>{{hmPriceList.FormatDepositRate}}</div>
+        <div class="col" style="padding: 8px 0" ><span class="deposit">资金账户余额：</span><br/>{{hmPriceList.UserBalance}}元</div>
+      </div>
+      <div class="row" style="background: #fff; text-align: center;color: #999;padding: 10px 0;font-size: 12px;" ng-show="showOrderPrice" ng-click="Boxselect()">
+        <div class="col-10"></div>
+        <!--<div class="text-center col-80"><input type="checkbox" id="readRheckboxId" ng-model="boxchecked">&nbsp;&nbsp;我已阅读《{{mallOrderObj.GoodsTypeShow}}交易规则》并同意</div>-->
+        <div class="text-center col-80"><input type="checkbox" id="readRheckboxId" ng-model="boxchecked" style="display:inline-block;vertical-align:middle">&nbsp;&nbsp;<span style="display: inline-block;vertical-align: middle;"> 我已阅读《{{mallOrderObj.GoodsTypeShow}}交易规则》并同意</span></div>
+      </div>
+    </ion-content>
+  <div class="mallcontact sectionchange" ng-show="showOrderSubmit">
+    <div class="row">
+      <div class="col col-50"><button class="button button-full button-light" ng-click="goBefore()">上一步</button></div>
+      <div class="col col-50"><button class="button button-full red-bg-font" ng-click="goSubmit()">确认提交</button></div>
+    </div>
+
+  </div>
+
+  <div class="mallcontact" ng-show="showOrderNext" ng-class="test">
+    <div class="row">
+      <div class="col" ng-click="goNext()"><button class="button button-full red-bg-font" >下一步</button></div>
+    </div>
+  </div>
+</ion-view>

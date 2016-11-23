@@ -1,0 +1,98 @@
+<ion-view id="mall" class=" ">
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goHistory()"></button>
+    <h3 class="title">报盘信息</h3>
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </div>
+
+  <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 42px;">
+    <div class="cus-detail-list">
+      <div class="row">
+        <div class="col">
+          <span class="cus-category">{{mallObj.CategoryShow}} {{mallObj.BrandShow}}</span>
+          <span class="cus-tag red-bg">{{mallObj.LeadsStatusShow}}</span>
+        </div>
+        <div class="col col-right">
+          <span class="scem-font-gray">{{mallObj.preDate}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">类型</div>
+        <div class="col" style="padding-right: 16px;">{{mallObj.GoodsTypeShow}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">投放企业</div>
+        <div class="col" style="padding-right: 16px;">{{mallObj.FirmShowName}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+        <div class="col">{{mallObj.SourcePlaceShow}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+        <div class="col">{{mallObj.theTotalWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">可&nbsp;&nbsp;售&nbsp;&nbsp; 量</div>
+        <div class="col">{{mallObj.ResidualWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">最小交收量</div>
+        <div class="col">{{mallObj.theMinWeight}}吨</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交易单位</div>
+        <div class="col "><span class="price-num">{{mallObj.TradeUnitNumber}}吨/批</span></div>
+      </div>
+      <div class="row">
+        <div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+        <div class="col price"><span class="price-num">{{mallObj.Price}}元/吨</span></div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+        <div class="col">{{mallObj.DeliveryPlace}}-{{hmDetailList.WHAddress}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">联&nbsp;&nbsp;系&nbsp;&nbsp;人</div>
+        <div class="col">{{hmDetailList.StoreContactName}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交收方式</div>
+        <div class="col">{{mallObj.SettlementMethodShow}}</div>
+      </div>
+      <div class="row">
+        <div class="col col-33">交货日期</div>
+        <div class="col">{{mallObj.FromatDeliveryStartDate}}</div>
+      </div>
+
+      <div class="row" ng-if="mallObj.showPercent">
+        <div class="col col-33">提货日期</div>
+        <div class="col">{{hmDetailList.FormatDeliveryStartDate}} - {{hmDetailList.FormatDeliveryEndDate}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">买家提货附加费</div>
+        <div class="col">	{{hmDetailList.FormatExtraLogisticsCost}}元/吨</div>
+      </div>
+
+      <div class="row" ng-if="mallObj.showPercent">
+        <div class="col col-33">保&nbsp;&nbsp;证&nbsp;&nbsp;金</div>
+        <div class="col">	{{hmDetailList.FormatDepositRate}}</div>
+      </div>
+      </div>
+
+	</ion-content>
+  <div class="mallcontact sectionchange " ng-show="buyerShow">
+    <div class="row">
+      <div class="col col-50"  ng-click="goInquiry()"><button class="button button-full red-bg-font" style="border-right: 1px solid #f3f3f3">询盘</button></div>
+      <div class="col col-50" ng-click="goOrder()"><button class="button button-full red-bg-font" >下单</button></div>
+    </div>
+  </div>
+
+  <div class="mallcontact sectionchange" ng-show="successPhone">
+    <a href="tel:4007209209" style="text-decoration: none" class="tel" ng-click="goPhone(this)">
+      <button class="button button-full red-bg-font" >联系客服</button>
+    </a>
+  </div>
+</ion-view>

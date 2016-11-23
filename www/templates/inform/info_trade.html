@@ -1,0 +1,31 @@
+
+<!--资讯-最新成交-->
+
+
+
+  <table class="cus-price-table">
+    <thead>
+    <tr>
+      <th>牌号</th>
+      <th>价格</th>
+      <th>时间</th>
+      <th>交货地</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="trade in infoTradeList">
+
+      <td>{{trade.BrandShow}}</td>
+      <td>{{trade.Price}}</td>
+      <!--<td class="cus-red">{{trade.REC_CREATETIME.substr(11,5)}}</td>-->
+      <td class="cus-red">{{trade.FromatCreateTime}}</td>
+      <td class="cus-green">{{trade.DeliveryPlace}}</td>
+
+    </tr>
+
+    </tbody>
+
+  </table>
+
+

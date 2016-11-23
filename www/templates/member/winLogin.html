@@ -1,0 +1,48 @@
+
+<ion-view scroll="false">
+
+	<div class="bar bar-header bar-positive">
+
+		<button ng-click="goBack()" class="button back-button buttons button-clear header-item">
+			<i class="icon ion-ios-arrow-back"></i>
+		</button>
+		<h1 class="title">登录</h1>
+	</div>
+	<!--<ion-nav-buttons side="left">
+
+		<button ng-click="goBack()" class="button back-button buttons button-clear header-item">
+			<i class="icon ion-ios-arrow-back"></i>
+		</button>
+
+		&lt;!&ndash;<button class="button button-clear" ng-click="goBack()">返回</button>&ndash;&gt;
+	</ion-nav-buttons>-->
+
+	<ion-content class="scem-bg has-header" scroll="false">
+		<div class="scem-logo">
+			<img src="img/logo.png">
+		</div>
+
+		<div class="list mt10">
+			<label class="item item-input cus-form">
+				<i class="iconfont icon-shuruyonghuming"></i>
+				<input id="phoneId" type="tel" ng-model="accountData.mobileNo" placeholder="请输入手机号" maxlength="11">
+			</label>
+			<label class="item item-input cus-form">
+				<i class="iconfont icon-shurumima"></i>
+				<input type="password" placeholder="请输入密码" ng-model="accountData.password" >
+			</label>
+		</div>
+		<div  class="login-forget row">
+			<div class="col"><a href="#/forgetPass">忘记密码?</a></div>
+			<div class="col tr"><a href="#/codeLogin">验证码登录</a></div>
+		</div>
+		<div class="login-button">
+    <button class="button button-block login-button1" ng-click="doLogin()">
+        <i class="icon ion-loading-c"></i>
+      登录
+    </button>
+			<button class="button button-block login-button2" ng-click="gotoVerifyPhone()">注册</button>
+		</div>
+	</ion-content>
+
+</ion-view>

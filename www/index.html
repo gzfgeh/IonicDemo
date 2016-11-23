@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html ng-app="starter">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src https://codepush.azurewebsites.net 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" />-->
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/scem.css" rel="stylesheet">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet"/>
+    <link href="css/scem.css" rel="stylesheet"/>
+    <link href="css/animation.css" rel="stylesheet"/>
+    <link href="fonts/iconfont.css" rel="stylesheet"/>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -14,30 +19,128 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-animate.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ng-cordova.js"></script>
+
     <script src="cordova.js"></script>
-
+    <script src="fonts/iconfont.js"></script>
     <!-- your app's js -->
+
     <script src="js/app.js"></script>
+    <script src="js/services/StatisticsService.js"></script>
+    <script src="js/shcemutil.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/routers.js"></script>
+    <script src="js/services/JPushService.js"></script><!--极光推送服务-->
+    <script src="js/services/BadgeService.js"></script><!--角标服务-->
+    <script src="js/services/AppVersionService.js"></script>
 
-    <script src="js/controllers/mainCtrl.js"></script>
-    <script src="js/controllers/mallCtrl.js"></script>
-    <script src="js/controllers/infoCtrl.js"></script>
-    <script src="js/controllers/userCtrl.js"></script>
-    <script src="js/controllers/orderCtrl.js"></script>
+    <script src="js/services/mallService/mallService.js"></script>
+    <script src="js/services/mallService/mallDetailService.js"></script>
+    <script src="js/services/mallService/mallExpenseService.js"></script>
+    <script src="js/services/mallService/mallCreateEnquiryService.js"></script>
+    <script src="js/services/mallService/mallOrderService.js"></script>
+    <script src="js/services/infoServe/infoService.js"></script>
+    <script src="js/services/infoServe/infoTopService.js"></script>
+    <script src="js/services/infoServe/infoDetailService.js"></script>
+    <script src="js/services/infoServe/infoKChartService.js"></script>
+    <script src="js/services/infoServe/infoNewTradeService.js"></script>
+    <script src="js/services/userService.js"></script><!--用户,权限相关的服务-->
+    <script src="js/services/messageService.js"></script>
+    <script src="js/services/mainService.js"></script>
+    <script src="js/services/MyDeliveryService.js"></script>
+    <script src="js/services/EnquiryService/SellerService.js"></script>
+    <script src="js/services/EnquiryService/EditService.js"></script>
+    <script src="js/services/order/capitalService.js"></script>
+    <script src="js/services/MyTradeService.js"></script>
+    <script src="js/services/ReceiptService.js"></script>
 
-    <script src="js/service/mallService.js"></script>
+   <!--  <script src="js/controllers/controllers.js"></script> -->
+    <script src="js/controllers/tabBarController.js"></script>
+    <script src="js/controllers/order/orderController.js"></script>
+    <script src="js/controllers/offerDetailController.js"></script>
+    <script src="js/controllers/tradeDetailController.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="js/controllers/mallCtrl/mallController.js"></script>
+    <script src="js/controllers/aboutCompanyController.js"></script>
+    <script src="js/controllers/newsListController.js"></script>
+    <script src="js/controllers/orderDetail_offerController.js"></script>
+    <script src="js/controllers/orderDetail_tradeController.js"></script>
+    <script src="js/controllers/orderDetail_enquiryController.js"></script>
+    <script src="js/controllers/order/mytradeController.js"></script>
+    <script src="js/controllers/order/TradePayController.js"> </script>
+    <script src="js/controllers/order/mysettlementController.js"></script>
+    <script src="js/controllers/order/myinquiryController.js"></script>
+    <script src="js/controllers/order/receiveinquiryController.js"></script>
+    <script src="js/controllers/order/TradeInquiryController.js"></script>
+    <script src="js/controllers/order/TradeSignatureController.js"></script>
+    <script src="js/controllers/order/TradeBreakController.js"></script>
+    <script src="js/controllers/order/TradeTurnController.js"></script>
+    <script src="js/controllers/order/TradeTakeController.js"></script>
+    <script src="js/controllers/order/capitalDetailController.js"></script>
+    <script src="js/controllers/order/mysellorderController.js"></script>
+    <script src="js/controllers/order/pdfViewController.js"></script>
+    <script src="js/controllers/infoCtrl/infoController.js"></script>
+    <script src="js/controllers/infoCtrl/infoDetailController.js"></script>
+    <script src="js/controllers/infoCtrl/infoKChartDetailControllers.js"></script>
+    <script src="js/controllers/mallCtrl/mallDetailController.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/controllers/mallCtrl/mallInquiryController.js"></script>
+    <script src="js/controllers/mallCtrl/mallOrderController.js"></script>
+    <script src="js/controllers/searchController.js"></script>
+    <script src="js/directives/TabHide.js"></script>
+    <script src="js/controllers/BaseController.js"></script>
+    <script src="lib/pouchdb-5.4.5.min.js"></script>
+    <script src="js/services/dbService.js"></script>
+    <script src="lib/echarts.common.min.js"></script>
+    <script src="js/services/EnquiryService/MyEnquiryService.js"></script>
+    <!--<script src="lib/templates.js"></script>-->
 
-    <script src="js/router.js"></script>
+
+
+    <!--<script type="text/javascript" src="js/SocialSharing.js"></script>-->
+
 
   </head>
-  <body>
-    <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-
+  <body ng-app="starter">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+      <!--<ion-nav-back-button></ion-nav-back-button>-->
+    <!--</ion-nav-bar>-->
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
     <ion-nav-view></ion-nav-view>
+
+    <div class="cus-keyboard" ng-class="keyboardHide">
+      <div class="row">
+        <span class="col" ng-click="keyboardClick(1)">1</span>
+        <span class="col" ng-click="keyboardClick(2)">2</span>
+        <span class="col" ng-click="keyboardClick(3)">3</span>
+      </div>
+      <div class="row">
+        <span class="col" ng-click="keyboardClick(4)">4</span>
+        <span class="col" ng-click="keyboardClick(5)">5</span>
+        <span class="col" ng-click="keyboardClick(6)">6</span>
+      </div>
+      <div class="row">
+        <span class="col" ng-click="keyboardClick(7)">7</span>
+        <span class="col" ng-click="keyboardClick(8)">8</span>
+        <span class="col" ng-click="keyboardClick(9)">9</span>
+      </div>
+      <div class="row row-last">
+        <span class="col" ng-click="keyboardFinish();">完成</span>
+        <span class="col" ng-click="keyboardClick(0)">0</span>
+        <span class="col" ng-click="keyboardDelete()"><i class="ion-backspace"></i></span>
+      </div>
+
+    </div>
+
   </body>
 </html>

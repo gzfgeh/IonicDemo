@@ -1,0 +1,15 @@
+<ion-view title="PDF查看">
+
+
+    <div class="bar bar-header bar-positive">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+        <h3 class="title">PDF查看</h3>
+
+    </div>
+
+    <ion-content padding="true">
+
+        <iframe style="width:100%;height:100%;" id="viewer" src="{{pdfUrl}}"></iframe>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,164 @@
+<ion-view id="top" >
+
+    <div class="bar bar-header bar-positive">
+
+
+        <form ng-submit="searchData()" style="width: 100%">
+            <div class="item-input-wrapper cus-header-search">
+                <span class="cus-search-select" ng-click="openPopover($event)">
+                  <span ng-bind="typeName"></span>
+                  <i class="ion-arrow-down-b"></i>
+                </span>
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="投放企业、牌号查询" ng-model="input.searchKey" style="width:60%;">
+            </div>
+        </form>
+
+
+    </div>
+
+    <ion-content padding="true" class="has-header gray-bg">
+      <ion-slide-box slide-interval='2000' auto-play="true" does-continue="true" delegate-handle="my-handle">
+      <ion-slide ng-repeat="item in infoList track by $index">
+      <div class="box blue" ng-click="clickInforBox($index)"><img ng-src={{item}} width="100%"></div>
+      </ion-slide>
+      </ion-slide-box>
+
+      <div class="cus-main-first">
+            <div class="row">
+              <div class="col" ng-click="girdClickOne()">
+                <i class="icon iconfont icon-xianhuoziyuan" style="background: #fa6567;"></i>
+                <div>现货资源</div>
+              </div>
+              <div class="col" ng-click="girdClickFive()">
+                <i class="icon iconfont icon-meirichengjiao" style="background: #f7774a;"></i>
+                <div>我的交易</div>
+              </div>
+              <div class="col" ng-click="girdClickMyInquiry()">
+                <i class="icon iconfont" style="background: #ffbd31;font-size:28px;line-height: 50px;">&#xe638;</i>
+                <div>我的询盘</div>
+              </div>
+              <div class="col" ng-click="girdGetInquiry()">
+                <i class="icon iconfont" style="background: #95e25e;">&#xe632;</i>
+                <div>收到的询盘</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col" ng-click="girdClickTwo()">
+                <i class="icon iconfont icon-shujuzhongxin" style="background: #53d0e2;"></i>
+                <div>化交价格</div>
+              </div>
+              <div class="col" ng-click="girdClickThree()">
+                <i class="icon iconfont icon-huajiaozixun160907" style="background: #91a8f8;"></i>
+                <div>化交资讯</div>
+              </div>
+              <div class="col" ng-click="girdClickFour()">
+                <i class="icon iconfont icon-huajiaobaogao" style="background: #d292dc;"></i>
+                <div>化交报告</div>
+              </div>
+              <div class="col" ng-click="girdDetailOfMoney()">
+                <i class="icon iconfont" style="background: #788dcd;font-size:28px;line-height: 48px;">&#xe62f;</i>
+                <div>资金详情</div>
+              </div>
+
+                <!--<div class="col" ng-click="girdClickSeven()">-->
+                    <!--<i class="icon iconfont icon-xiayoudiaoyan" style="background: #d292dc;"></i>-->
+                    <!--<div>下游调研</div>-->
+                <!--</div>-->
+                <!--<div class="col" ng-click="girdClickEight()">-->
+                   <!--&lt;!&ndash; <i class="icon iconfont icon-gengduofuwu" style="background: #778dcc;"></i>&ndash;&gt;-->
+                    <!--<i class="icon iconfont icon-jingqingqidai" style="background: #c0c0c0;"></i>-->
+                    <!--<div>敬请期待</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+
+        <div class="cus-notice row" ng-hide="noticeHide" ng-click="closeNotice();">
+            <div class="col col-left" style="max-width:10%;"><i class="icon iconfont icon-xiaoxi cus-red"></i></div>
+            <div class="col middle-text" style="max-width:85%;">
+                 {{noticeInfo}}
+            </div>
+        </div>
+
+        <div class="cus-table-head">
+            <div class="title">
+                <span></span>
+                报盘
+            </div>
+
+            <div class="cus-table-tab">
+                <span ng-class="tabClass1" ng-click="tab1Click()">全部</span>
+                <span ng-class="tabClass2" ng-click="tab2Click()">PP</span>
+                <span ng-class="tabClass3" ng-click="tab3Click()">PE</span>
+                <span ng-class="tabClass4" ng-click="tab4Click()">更多</span>
+            </div>
+
+        </div>
+        <div class="cus-main-table">
+
+            <div ng-repeat="mainItem in mainList track by $index">
+                <div class="row" ng-click="gotoDetail(mainItem)">
+                    <div class="col" align="center" >
+                        {{mainItem.BrandShow}}
+                    </div>
+                    <div class="col" align="center" >
+                        {{mainItem.DeliveryPlace == null? "--" : mainItem.DeliveryPlace}}
+                    </div>
+                    <div class="col cus-green" align="center" >
+                        {{mainItem.ResidualWeight}}吨
+                    </div>
+                    <div class="col cus-red" align="center" >
+                        {{mainItem.Price}}元/吨
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cus-table-head">
+            <div class="title">
+                <span></span>
+                成交
+            </div>
+
+            <!--<div class="cus-table-tab">-->
+                <!--<span ng-class="tabClass4" ng-click="tab4Click()">PE</span>-->
+                <!--<span ng-class="tabClass5" ng-click="tab5Click()">PP</span>-->
+                <!--&lt;!&ndash;<span ng-class="tabClass6" ng-click="tab6Click()">PVC</span>&ndash;&gt;-->
+            <!--</div>-->
+
+        </div>
+        <div class="cus-main-table">
+            <div ng-repeat="mainSecondItem in mainSecondList track by $index">
+                <div class="row" >
+                    <div class="col" align="center" >
+                        {{mainSecondItem.BrandShow}}
+                    </div>
+                    <div class="col" align="center" >
+                        {{mainSecondItem.DeliveryPlace}}
+                    </div>
+                    <div class="col cus-red" align="center" >
+                      {{mainSecondItem.Price}}元/吨
+                    </div>
+                    <div class="col cus-green" align="center" >
+                        {{mainSecondItem.FromatCreateTime}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <ion-spinner icon="bubbles" class="spinner-dark" style="text-align: center;top:50%;left:48%;position: absolute;" ng-if="showLoading"></ion-spinner>
+
+	</ion-content>
+  <div class="share-back " ng-if="isShowUpdateDialog">
+    <div class="back-content text-center">
+      <h4>请升级到最新版本</h4>
+      <p>版本升级</p>
+      <button class="button button-full button-positive" ng-click="updateVersion()" style="background: #ea5251;color: #fff;">更新</button>
+    </div>
+  </div>
+
+</ion-view>
+

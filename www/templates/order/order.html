@@ -1,0 +1,55 @@
+<ion-view  id="order">
+  <div class="bar bar-header bar-positive">
+    <h1 class="title">我的交易</h1>
+    <button class="button item-button-right button-clear"style="right: 11px;" ng-click="msgClicked()"><i class="icon iconfont" style="font-size: 20px;">&#xe63a;</i>  <div ng-if="hasPoint" class="header-tip"></div></button>
+
+  </div>
+
+
+  <ion-content padding="true" class="has-header has-subheader  gray-bg" style="top:44px;">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down" ></ion-refresher>
+    <div class="order-title white-bg" align="center" ng-click="clickPanel((tradeType<0),11)">
+      <h1>{{moneyCount | number:2}}</h1>
+
+      <div>账户资金余额(元)</div>
+    </div>
+    <ion-list>
+      <ion-item style="font-size: 15px;" ng-class="{true:'light-gray-color'}[tradeType<0]" ng-click="clickOrder(tradeType<0)">
+        <div class="row">
+        <div class="col">我的订单</div>
+        <div class="item-note col" style="text-align: right;">查看全部订单 <i class="icon ion-ios-arrow-right"></i></div>
+         </div>
+      </ion-item>
+    </ion-list>
+      <div>
+          <ion-item class="gray-bg" style="font-size: 15px;">
+              待处理事项
+          </ion-item>
+      </div>
+    <div class="white-bg">
+        <ul class="order-menu white-bg text-center">
+          <li class="col col-33 white-bg " ng-class="{true:'light-gray-color'}[tradeType!=0 && tradeType!=2]" ng-click="clickPanel((tradeType!=0 && tradeType!=2),0)"><i class="icon  order-chart iconfont">&#xe632;</i><span class="circle-num" ng-if="EnquiryCount">{{EnquiryCount}}</span>收到的询盘</li>
+          <li class="col col-33 white-bg" ng-class="{true:'light-gray-color'}[tradeType!=0 && tradeType!=2]" ng-click="clickPanel((tradeType!=0 && tradeType!=2),1)"><i class="icon iconfont">&#xe62e;</i><span class="circle-num" ng-if="NeedArrivalCount">{{NeedArrivalCount}}</span>待发提货通知</li>
+          <li class="col col-33 white-bg" ng-class="{true:'light-gray-color'}[tradeType!=0 && tradeType!=2]" ng-click="clickPanel((tradeType!=0 && tradeType!=2),2)"><i class="icon iconfont">&#xe62c;</i><span class="circle-num" ng-if="NeedShortCount">{{NeedShortCount}}</span>待确认溢短</li>
+          <li class="col col-33 white-bg" ng-class="{true:'light-gray-color'}[tradeType!=1 && tradeType!=2]" ng-click="clickPanel((tradeType!=1 && tradeType!=2),3)"><i class="icon iconfont">&#xe62f;</i><span class="circle-num" ng-if="NeedPayCount">{{NeedPayCount}}</span>待支付</li>
+          <li class="col col-33 white-bg" ng-class="{true:'light-gray-color'}[tradeType!=1 && tradeType!=2]" ng-click="clickPanel((tradeType!=1 && tradeType!=2),4)"><i class="icon iconfont">&#xe62d;</i><span class="circle-num" ng-if="NeedDeliveryCount">{{NeedDeliveryCount}}</span>待申请交收</li>
+          <li class="col col-33 white-bg" ng-class="{true:'light-gray-color'}[tradeType!=1 && tradeType!=2]" ng-click="clickPanel((tradeType!=1 && tradeType!=2),5)"><i class="icon iconfont">&#xe62b;</i><span class="circle-num" ng-if="NeedSignCount">{{NeedSignCount}}</span>待签收</li>
+        </ul>
+    </div>
+    <div>
+      <ion-item class="gray-bg" style="font-size: 15px;">
+         交易服务
+      </ion-item>
+    </div>
+    <div class="text-center">
+        <ul class="order-message">
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType!=0 && tradeType!=2]" ng-click="clickPanel((tradeType!=0 && tradeType!=2),6)"><i class="icon  red-color iconfont">&#xe637;</i><div>我的卖盘</div></li>
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType!=0 && tradeType!=2]" ng-click="clickPanel((tradeType!=0 && tradeType!=2),10)"><i class="icon iconfont red-color">&#xe632;</i><div>我收到的询盘</div></li>
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType<0]" ng-click="clickPanel((tradeType<0),7)"><i class="icon iconfont yellow-color">&#xe635;</i><div>我的成交</div></li>
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType!=1 && tradeType!=2]" ng-click="clickPanel((tradeType!=1 && tradeType!=2),9)"><i class="icon iconfont green-color">&#xe638;</i><div>我的询盘</div></li>
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType<0]" ng-click="clickPanel((tradeType<0),8)"><i class="icon iconfont blue-color">&#xe636;</i><div>我的交收</div></li>
+            <li class="col col-33  white-bg" ng-class="{true:'light-gray-color'}[tradeType<0]" ng-click="clickPanel((tradeType<0),11)"><i class="icon iconfont darkyellow-color">&#xe62f;</i><div>资金详情</div></li>
+        </ul>
+    </div>
+  </ion-content>
+</ion-view>

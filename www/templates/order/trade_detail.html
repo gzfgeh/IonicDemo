@@ -1,0 +1,194 @@
+<ion-view title="成交详情">
+
+	<div class="bar bar-header bar-positive">
+		<!--<i class="icon iconfont" style="display: inline-block;line-height: 33px;margin-left: 11px;" ng-click="goHistory()">&#xe614;</i>-->
+		<button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+		<h3 class="title">成交详情</h3>
+		<a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+	</div>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 52px">
+
+		<div class="cus-detail-list" style="padding-right: 16px;">
+
+		<div class="row">
+			<div class="col">
+				<span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+				<span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+			</div>
+
+			<!--<div class="col col-right">-->
+				<!--<span class="scem-font-gray">{{item.DetailDate}}</span>-->
+			<!--</div>-->
+		</div>
+
+		<div class="row">
+			<div class="col col-33">成&nbsp;&nbsp;交&nbsp;&nbsp;号</div>
+			<div class="col blue-color">{{item.OrderId}}</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+			<div class="col">{{item.SourcePlaceShow}}</div>
+		</div>
+
+			<div class="row">
+				<div class="col col-33">包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装</div>
+				<div class="col">{{item.PackageStandardShow}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+				<div class="col">{{item.Quantity}}批/<span class="red-color">{{item.QuantityAll}}</span>吨</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+				<div class="col"><span class="red-color">{{item.Price}}元/吨</span></div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">交收方式</div>
+				<div class="col">{{item.GoodsType == 1 ? "买方支付货款日起四日内自提或转货权" : "成交日起四日内" + item.SettlementMethodShow}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">货物质量</div>
+				<div class="col">合格品</div>
+			</div>
+
+		<div class="row">
+			<div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+			<div class="col">{{item.StoreHouseShow}}</div>
+		</div>
+
+		<!--<div class="row">-->
+			<!--<div class="col col-33">重&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>-->
+			<!--<div class="col">{{item.Weight}}吨</div>-->
+		<!--</div>-->
+
+		<!--<div class="row">-->
+			<!--<div class="col col-33">单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</div>-->
+			<!--<div class="col">{{item.Price|number:2}}元/吨</div>-->
+		<!--</div>-->
+
+		<div class="row">
+			<div class="col col-33">货款总额</div>
+			<div class="col">{{item.Amount|number:2}}元</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">交易手续费</div>
+			<div class="col">{{(item.BuyFee == 0 ? item.SellFee : item.BuyFee) |number:2}}元</div>
+		</div>
+
+			<div class="row">
+				<div class="col col-33">最小交收量</div>
+				<div class="col">{{item.MinQuantity}}批/{{item.MinQuantityAll}}吨</div>
+			</div>
+
+		<div class="row">
+			<div class="col col-33">交货日期</div>
+			<div class="col">{{item.DelievryDateShow}}</div>
+		</div>
+
+		<div class="row" ng-if="item.type == 0">
+			<div class="col col-33">已申请交收量(吨)</div>
+			<div class="col">{{item.DeliveryWeight}} 吨</div>
+		</div>
+
+
+      <div class="row" ng-if="!(item.type == 0)">
+        <div class="col col-33">未交收量</div>
+        <div class="col">{{item.Weight - item.DeliveryWeight}} 吨</div>
+      </div>
+
+		<!--<div class="row">-->
+			<!--<div class="col col-33">交&nbsp;&nbsp;收&nbsp;&nbsp;量</div>-->
+			<!--<div class="col">{{item.DeliveryQuantity}}</div>-->
+		<!--</div>-->
+
+			<div class="row">
+				<div class="col col-33">仓库名称</div>
+				<div class="col">{{item.WareHouseFN}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">仓库地址</div>
+				<div class="col">{{item.WHAddress}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">成交状态</div>
+				<div class="col blue-color">{{item.TradeStatusShow}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-33">仓库联系人及电话</div>
+				<div class="col">{{item.WareHouseContactName}}</div>
+			</div>
+
+      <div class="row">
+        <div class="col col-33">买家提货附加费</div>
+        <div class="col">	{{item.ExtraLogisticsCost.toFixed(2)}}元/吨</div>
+      </div>
+
+      <div class="row" ng-if="isShowPreGoods">
+        <div class="col col-33">提货日期</div>
+        <div class="col">{{item.DelievryDateShow}} - {{item.DeliveryStartDate.split(" ")[0].split("-").join("/")}}</div>
+      </div>
+
+      <div class="row" ng-if="isShowPreGoods">
+        <div class="col col-33">保&nbsp;&nbsp;证&nbsp;&nbsp;金</div>
+        <div class="col">{{item.BuyDepositRateShow}}</div>
+      </div>
+
+
+
+			<!--<div class="row" style="margin-bottom: 0" ng-if="picAddr != undefined">-->
+				<!--<div class="col col-33">签收单凭证</div>-->
+				<!--<div class="col">-->
+					<!--<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">-->
+						<!--<ion-slide ng-repeat="item in picAddr track by $index">-->
+							<!--<div class="row">-->
+							    <!--<div class="col"><img ng-src={{item}} alt="" height="100" width="100" ng-click="clickPic($index)"></div>-->
+							<!--</div>-->
+						<!--</ion-slide>-->
+					<!--</ion-slide-box>-->
+				<!--</div>-->
+			<!--</div>-->
+
+		</div>
+
+
+	</ion-content>
+	<div class="mallcontact mallfix">
+		<div class="row">
+			<div class="col"  ng-click="goBack()" style="border-right: 1px solid #d7d7d9" ><button class="button button-full button-light" ng-class="cancleBtnClass">
+				取消
+			</button></div>
+			<!--<div class="col "  ng-repeat="btnItem in btnList">-->
+				<!--<button class="button button-full button-light"  ng-class="btnclass" ng-click="goNext(btnItem.Name,btnItem.ID)">-->
+					<!--{{btnItem.Name}}</button>-->
+			<!--</div>-->
+
+      <div class="col" ng-if="isBreak" ><button class="button button-full" ng-class="breakClass" ng-click="breakClick()">
+        我要违约
+      </button></div>
+
+      <div class="col" ng-if="isLook"  ><button class="button button-full" ng-class="lookClass" ng-click="lookClick()">
+        查看
+      </button></div>
+
+      <div class="col" ng-if="isOther"  ><button class="button button-full" ng-class="otherClass" ng-click="goNext()">
+        {{btnThree}}
+      </button></div>
+
+
+			<!--<div class="col" ng-if="isDownLoad"><button class="button button-full blue-back"  ng-click="goDownLoad()">-->
+				<!--生成下载-->
+			<!--</button></div>-->
+
+		</div>
+	</div>
+</ion-view>

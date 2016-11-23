@@ -1,0 +1,44 @@
+<!--<ion-view  title="资金详情" class=" ">-->
+  <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+    <!--<ion-nav-back-button></ion-nav-back-button>-->
+    <!--<ion-nav-buttons side="right">-->
+      <!--<a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>-->
+    <!--</ion-nav-buttons>-->
+  <!--</ion-nav-bar>-->
+
+  <ion-view class=" ">
+    <div class="bar bar-header bar-positive">
+      <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+      <h3 class="title">资金详情</h3>
+      <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+    </div>
+
+
+  <ion-content padding="true" class="has-header  gray-bg">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down" ></ion-refresher>
+    <div class="row capital-title white-bg">
+      资金账户余额（元）
+    </div>
+
+    <div class="row text-center red-color capital-num white-bg">
+      <div class="col text-center">{{item.USERBALANCEFromOra | currency:""}}</div>
+    </div>
+
+
+    <div class="row capital-title white-bg" style="margin-top: 12px;padding-top: 16px;">
+      现货可用授信额度（元）
+    </div>
+    <div class="row text-center red-color capital-num white-bg">
+      <div class="col text-center">{{item.BALANCEFromS | currency:""}}</div>
+    </div>
+
+    <div class="row capital-title white-bg" style="margin-top: 12px;padding-top: 16px;">
+      预售可用授信额度（元）
+    </div>
+    <div class="row text-center red-color capital-num white-bg">
+      <div class="col text-center">{{item.preSaleBALANCEFromS | currency:""}}</div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+
+<!--资讯-化交报告-->
+
+<ul class="cus-list" ng-repeat="report in infoReportList">
+
+
+    <li ng-click="goDetail('tabs.info_detail', report.ID);">
+
+        <div class="row cus-icon-text">
+            <div class="col">{{report.InfoTitle}}</div>
+            <div class="col cus-date">{{report.Date.substr(0,10)}}</div>
+        </div>
+
+    </li>
+
+</ul>
+

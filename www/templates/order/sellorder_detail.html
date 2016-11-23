@@ -1,0 +1,146 @@
+
+
+<ion-view class=" ">
+
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <h3 class="title">卖盘信息</h3>
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </div>
+
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 44px" on-scroll="checkPosition()">
+        <div class="cus-detail-list">
+            <div class="row">
+                <div class="col">
+                  <span class="cus-category">{{item.FormatCategoryBrand}}</span>
+                  <span class="cus-tag red-bg">{{item.FormatGoodsType}}</span>
+                </div>
+                <div class="col col-right">
+                  <span class="scem-font-gray">{{item.FormatCreateDate}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+                <div class="col">{{item.SourcePlaceName}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-33">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+              <div class="col">{{item.TotalWeight}}吨</div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">可&nbsp;&nbsp;售&nbsp;&nbsp; 量</div>
+                <div class="col">
+                  <span ng-if="!item.showInput">{{item.ResidualWeight}}吨</span>
+                  <span ng-if="item.showInput"><input type="tel" ng-model="item.ResidualQuantity" class="cus-input-half" style="text-align: center;" ng-pattern="/^[1-9]\d*|0$/" ng-focus="checkBlur()" ng-blur="findBlur()">批</span>
+                  </div>
+            </div>
+
+          <div class="row" ng-if="item.showInput">
+            <div class="col col-33">吨数</div>
+            <div class="col "><span class="price-num">{{item.ResidualWeight}}吨</span></div>
+          </div>
+
+
+            <div class="row">
+                <div class="col col-33">最小交收量</div>
+                <div class="col">
+                  <span ng-if="!item.showInput">{{item.MinWeight}}吨</span>
+                  <span ng-if="item.showInput">
+                  <input type="tel" ng-model="item.minPi"  class="cus-input-half"  style="text-align: center;"  ng-pattern="/^[1-9]\d*|0$/" ng-focus="checkBlur()" ng-blur="findBlur()">
+                  批</span>
+                  </div>
+            </div>
+
+            <div class="row" ng-if="item.showInput">
+              <div class="col col-33">最小吨数</div>
+              <div class="col "><span class="price-num">{{item.MinWeight}}吨</span></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-33">交易单位</div>
+                <div class="col "><span class="price-num">{{item.TradeUnitNumber}}吨/批</span></div>
+            </div>
+            <div class="row">
+                <div class="col col-33">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+                <div class="col price">
+                  <span class="price-num" ng-if="!item.showInput">{{item.Price| number:2}}</span>
+                  <span><input type="tel" ng-model="item.Price" class="cus-input-half" ng-if="item.showInput" style="text-align: center;"  ng-pattern="/^[1-9]\d*|0$/" ng-focus="checkBlur()" ng-blur="findBlur()"></span>
+                  元/吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+                <div class="col">{{item.DeliveryPlace}}</div>
+            </div>
+
+          <div class="row">
+            <div class="col col-33">仓库地址</div>
+            <div class="col">{{item.StoreHouseFN}}</div>
+          </div>
+
+          <div class="row">
+            <div class="col col-33">仓库联系人及电话</div>
+            <div class="col">{{item.StoreContactName}}</div>
+          </div>
+
+            <div class="row">
+                <div class="col col-33">交收方式</div>
+                <div class="col">{{item.FormatSettlementMethod}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交收时间</div>
+                <div class="col">{{item.FormatDeliveryDate}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">报盘时间</div>
+                <div class="col">{{item.FormatCreateDate}}</div>
+            </div>
+          <div class="row">
+            <div class="col col-33">买家提货附加费</div>
+            <div class="col">	{{item.FormatExtraLogisticsCost}}元/吨</div>
+          </div>
+
+          <div class="row" ng-if="item.theDetailShowStatus && item.theDetailShowStatus != 1">
+            <div class="col col-33">到货日期</div>
+            <div class="col">{{item.FormatDeliveryStartDate}} - {{item.FormatDeliveryEndDate}}</div>
+          </div>
+
+          <div class="row" ng-if="item.theDetailShowStatus && item.theDetailShowStatus != 1">
+            <div class="col col-33">保证金比例</div>
+            <div class="col">	{{item.FormatDepositRate}}</div>
+          </div>
+        </div>
+
+    </ion-content>
+    <div class="mallcontact sectionchange" ng-if="!item.showInput && !item.cancle">
+        <div class="row">
+            <div class="col col-50"  ng-click="goSubmit()"><button class="button button-full button-light">
+                撤销
+            </button></div>
+            <div class="col col-50" ng-click="goEdit()"><button class="button button-full red-bg-font" >
+                编辑
+            </button></div>
+        </div>
+    </div>
+    <div class="mallcontact" ng-if="item.showInput && !item.cancle" ng-class="test">
+        <div class="row">
+            <div class="col "  ng-click="goSure()"><button class="button button-full red-bg-font" >
+                确定
+            </button></div>
+
+        </div>
+    </div>
+
+    <div class="mallcontact sectionchange" ng-if="item.cancle" >
+        <div class="row">
+            <div class="col "  ng-click="goBack()"><button class="button button-full red-bg-font" >
+                返回
+            </button></div>
+
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,26 @@
+	<ion-view title="搜索" scroll="false" class="slide-left-right">
+
+    <ion-nav-buttons side="left">
+      <button class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    
+	<ion-content class="scem-bg" scroll="false">
+
+		<div class="list" style="margin-top:10px;">
+			<label class="item item-input">
+				<input id="phoneId" type="text" ng-model="searchData" placeholder="投放企业、牌号、仓库" maxlength="11">
+			</label>
+
+		</div>
+
+		<div style="padding: 10px;">
+			<button class="button button-full button-assertive" ng-click="doSearch()">
+				  <i class="icon ion-loading-c"></i>
+				搜索
+			</button>
+
+		</div>
+
+	</ion-content>
+
+</ion-view>

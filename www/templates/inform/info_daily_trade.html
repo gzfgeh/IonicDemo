@@ -1,0 +1,18 @@
+
+<!--资讯-每日成交-->
+
+<ul class="cus-list" ng-repeat="daily in infoDailyTradeList">
+
+
+
+    <li ng-click="goDetail('tabs.info_detail', daily.ID);">
+
+        <div class="row cus-icon-text">
+            <div class="col">{{daily.InfoTitle}}</div>
+            <div class="col cus-date">{{daily.Date.substr(0,10)}}</div>
+        </div>
+
+    </li>
+
+</ul>
+

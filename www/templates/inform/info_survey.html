@@ -1,0 +1,17 @@
+
+<!--资讯-下游调研-->
+
+
+<ul class="cus-list" ng-repeat="survey in infoSurveyList">
+
+
+    <li ng-click="goDetail('tabs.info_detail', survey.ID);">
+
+        <div class="row cus-icon-text">
+            <div class="col">{{survey.InfoTitle}}</div>
+            <div class="col cus-date">{{survey.Date.substr(0,10)}}</div>
+        </div>
+
+    </li>
+
+</ul>

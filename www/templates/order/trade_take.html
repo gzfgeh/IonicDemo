@@ -1,0 +1,95 @@
+<!--<ion-view title="申请自提交收">-->
+
+  <!--<ion-nav-bar class="bar bar-positive" align-title="center">-->
+    <!--<ion-nav-back-button></ion-nav-back-button>-->
+    <!--<ion-nav-buttons side="right">-->
+      <!--<button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">-->
+        <!--<i class="icon ion-ios-telephone"></i>-->
+      <!--</button>-->
+    <!--</ion-nav-buttons>-->
+  <!--</ion-nav-bar>-->
+
+<ion-view >
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goHistory()"></button>
+    <h3 class="title">申请自提交收</h3>
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </div>
+
+  <ion-content padding="true" class="has-header cus-col-detail">
+
+    <div class="cus-detail-list">
+
+      <div class="row">
+        <div class="col">
+          <span class="cus-category">{{item.CategoryLeaf}} {{item.Brand}}</span>
+          <!--<span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span> GetSelfPickInfo返回方法里没有GoodsType字段-->
+        </div>
+
+        <!--<div class="col col-right">-->
+          <!--<span class="scem-font-gray"></span>-->
+        <!--</div>-->
+
+      </div>
+
+      <div class="row">
+        <div class="col col-33">成交单号</div>
+        <div class="col blue-color">{{item.OrderID}} </div>
+      </div>
+
+      <!--<div class="row">-->
+        <!--<div class="col col-33">货品品类牌号：</div>-->
+        <!--<div class="col">{{item.CategoryLeaf}} - {{item.Brand}}-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="row">
+        <div class="col col-33">可提货数量</div>
+        <div class="col red-color">
+          {{item.TradeNumber}}批 / {{item.Quantity}}吨
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">最小交收量</div>
+        <div class="col">
+          {{item.MinQuantity}}批
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">传&nbsp;&nbsp;真&nbsp;&nbsp;号</div>
+        <div class="col">
+          021-51554572，51550098
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33">客服电话</div>
+        <div class="col">
+          <a href="tel:4007209209" style="text-decoration: none"> 4007-209-209-3</a>
+        </div>
+      </div>
+
+      <div class="row take-row">
+        <div class="col"><span>请下载交收模板，完整、准确填写并加盖公章、合同章等实物印章，传真至上海化交物流交收部。</span></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div>
+    </div>
+    <div class="mallcontact sectionchange">
+      <div class="row">
+        <div class="col"  ng-click="goBack()"><button class="button button-full button-light">
+          取消
+        </button></div>
+        <div class="col col-50" ng-click="goDownload()"><button class="button button-full red-bg-font " >
+          下载模板
+        </button></div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

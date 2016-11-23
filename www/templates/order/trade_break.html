@@ -1,0 +1,99 @@
+<ion-view title="提交违约">
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear" ng-click="doSomething()" style="padding-right: 16px;">
+              <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 50px;">
+
+        <div class="cus-detail-list" style="padding-right: 16px;padding-left: 16px;">
+
+            <div class="row">
+                <div class="col">
+                    <span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+                    <span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+                </div>
+
+                <div class="col col-right">
+                    <span class="scem-font-gray"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-45 text-left light-gray">已发提货委托书数量:</div>
+                <div class="col blue-color">{{hadsendQ}}批/{{hadsendW}}吨</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-45  text-left light-gray">可申请违约数量:</div>
+                <div class="col">{{item.ApplyMaxQuantity}}批 / {{item.ApplyMaxQuantityDun}}吨</div>
+            </div>
+          <div class="row">
+            <div class="col col-45  text-left light-gray">可申请违约信息:</div>
+
+          </div>
+
+  <table width="100%"  class="text-center trade-table" >
+
+    <tr class="row " style="padding: 0;margin: 0">
+      <td class="col">申请违约</td>
+      <td class="col">交收号</td>
+      <td class="col">数量</td>
+    </tr>
+    <tr class="row" ng-repeat="item in deliverybreachlist track by $index">
+      <td class="col"><input type="checkbox" name="myradio"  class="regular-radio" ng-click=select(item.Quantity,$event,item.DeliveryID) >
+       </td>
+      <td class="col">{{item.DeliveryID}}</td>
+      <td class="col" >{{item.Quantity}}批/{{item.Weight}}吨</td>
+    </tr>
+    <tr class="row" ng-if=isDislasttable>
+      <td class="col"><input type="checkbox" name="myradio" class="regular-radio" ng-click=select(NodeliveryQa,$event,-1)></td>
+      <td class="col">未申请交收</td>
+      <td class="col" style="text-align: left"><div style="margin: 0 5px;"><input type="tel" ng-model = "NodeliveryQa" ng-click="checkBlur()" ng-blur="findBlur()" ng-disabled=ischangeQ ng-change="change(NodeliveryQa)">批/{{(NodeliveryQa*item.TradeUnitNumber| number:6)*1}}吨</div></td>
+    </tr>
+
+  </table>
+
+            <div class="row">
+                <div class="col col-45 text-left light-gray">申请违约数量:</div>
+                <div class="col"><input type="number"  value={{result}} ng-disabled="true"
+                                 style="border : 1px solid #f2f2f2;width: 50%;display: inline-block;text-align: center"  ng-click="checkBlur()" ng-blur="findBlur()" ng-keyup="keyUp()" class="table-gray">批 / {{applybreachW}}吨</div>
+            </div>
+          <div class="row">
+            <div class="col col-45  text-left light-gray">违约理由:</div>
+            <div class="col"><textarea style="border: 1px solid #e2e2e2;border-radius: 5px; width: 90%;"  rows="4" cols="25" ng-click="checkBlur()" ng-blur="findBlur()" ng-model="reason" ng-change="reasonchange(reason)">
+              {{reason}}
+            </textarea></div>
+          </div>
+
+            <div class="row">
+                <div class="col col-45 text-left light-gray">预计违约金额:</div>
+                <div class="col red-color">
+                {{breachtotalMoney | number:2}}元
+                </div>
+
+            </div>
+            <div class="row text-center ">
+                <div class="col" style="background: #fdefef;color: #ea5251;margin: 16px 0px 0 16px">该金额仅供参考，扣除金额以实际为准</div>
+            </div>
+        </div>
+
+    </ion-content>
+  <div class="mallcontact" ng-class="test">
+    <div class="row">
+      <div class="col col-50"  ng-click="goBack()" style="border-right: 1px solid #d7d7d9"><button class="button button-full button-light">
+        取消
+      </button></div>
+      <div class="col col-50" ng-click="tradeBreak()"><button class="button button-full red-bg-font">
+        提交违约申请
+      </button></div>
+    </div>
+  </div>
+
+</ion-view>

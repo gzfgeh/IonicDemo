@@ -1,0 +1,61 @@
+<ion-view title="查看签收单">
+
+
+    <ion-nav-bar class="bar bar-positive" align-title="center">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content padding="true">
+
+        <div class="order-main">
+            <div class="order-view-title">一、签收文件</div>
+            <div class="order-col">
+                <div class="row cus-trade-table" style="flex-flow:row wrap;-webkit-flex-flow:row wrap;">
+                    <div class="col col-50" ng-repeat="addr in PicAddrList">
+                        <a ng-if="addr.src!='img/pdf.png'" ng-click="showFullImg(addr.href)"><img ng-src={{addr.src}} alt=""></a>
+
+                        <a ng-if="addr.src=='img/pdf.png'" ng-click="pdfView(addr.href)"><img ng-src={{addr.src}} alt=""></a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-view-title">二、交收列表</div>
+            <table class="view-order-table">
+                <thead>
+                <th>交收单号</th>
+                <th>交收数量</th>
+                <th>实收数量</th>
+                </thead>
+            </table>
+
+            <div ng-repeat="data in list" class="row cus-trade-table" style="border-bottom: 1px solid #f2f2f2;">
+                <div class="col col-33">{{data.DeliveryID}}</div>
+                <div class="col col-33">{{data.Quantity}}</div>
+                <div class="col col-33">{{data.TakenQuantity==0?data.Quantity:data.TakenQuantity}}</div>
+            </div>
+
+        </div>
+
+        <div class="mallcontact">
+            <div class="row">
+                <div class="col col-100"  ng-click="goBack()"><button class="button button-full red-bg-font">
+                    确定
+                </button></div>
+            </div>
+        </div>
+
+    </ion-content>
+
+    <div class="full-img" ng-hide="imgObj.hide">
+
+
+        <i class="ion-ios-close-outline" ng-click="closeFullImg()"></i>
+
+        <div>
+            <!--<img src="img/pdf.png"/>-->
+            <img src="{{imgObj.url}}">
+        </div>
+    </div>
+
+</ion-view>

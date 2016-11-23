@@ -1,0 +1,105 @@
+<ion-view >
+
+  <div class="bar bar-header bar-positive">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <h3 class="title">询盘信息</h3>
+    <a class="button button-icon ion-ios-telephone" href="tel:4007209209"></a>
+  </div>
+
+
+    <ion-content padding="true" class="has-header cus-col-detail" style="margin-bottom: 50px;">
+        <div class="cus-detail-list">
+
+            <div class="row">
+              <div class="col">
+                <span class="cus-category">{{item.CategoryShow}} {{item.BrandShow}}</span>
+                <span class="cus-tag red-bg">{{item.GoodsType == 0?"现货":"预售"}}</span>
+              </div>
+
+              <div class="col col-right">
+                <span class="scem-font-gray">{{item.preDate}}</span>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</div>
+                <div class="col">{{item.SourcePlaceShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+                <div class="col red-color">{{item.Enquiry_Weight}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">可&nbsp;&nbsp;售&nbsp;&nbsp;量</div>
+                <div class="col green-color">{{item.ResidualWeight}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">最小交收量</div>
+                <div class="col">{{item.MinWeight}}吨</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交易单位</div>
+                <div class="col">{{item.TradeUnitNumber}}吨/批</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">询盘价格</div>
+                <div class="col red-color">{{item.Enquiry_Price}}元/吨</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-33">卖盘价格</div>
+              <div class="col green-color">{{item.Price}}元/吨</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-33">仓库地址</div>
+              <div class="col">{{item.Address}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;货&nbsp;&nbsp;地</div>
+                <div class="col">{{item.DeliveryPlace}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交收方式</div>
+                <div class="col">{{item.SettlementMethodShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交货日期</div>
+                <div class="col">{{item.DeliveryStartDateShow}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33">交&nbsp;&nbsp;易&nbsp;&nbsp;员</div>
+                <div class="col">{{item.EnquiryUser}}</div>
+            </div>
+
+          <div class="row">
+            <div class="col col-33">买家提货附加费</div>
+            <div class="col">	{{hmInquiryDetailList.FormatExtraLogisticsCost}}元/吨</div>
+          </div>
+
+          <div class="row" ng-if="item.inquiryDetailShowStatus && item.inquiryDetailShowStatus != 1">
+            <div class="col col-33">到货日期</div>
+            <div class="col">{{hmInquiryDetailList.FormatDeliveryStartDate}} - {{hmInquiryDetailList.FormatDeliveryEndDate}}</div>
+          </div>
+
+          <div class="row" ng-if="item.inquiryDetailShowStatus && item.inquiryDetailShowStatus != 1">
+            <div class="col col-33">保证金比例</div>
+            <div class="col">	{{hmInquiryDetailList.FormatDepositRate}}</div>
+          </div>
+
+        </div>
+
+
+    </ion-content>
+    <div class="mallcontact sectionchange">
+        <div class="row">
+            <div class="col col-50"  ng-click="goBack()"><button class="button button-full button-light">
+                取消
+            </button></div>
+            <div class="col col-50" ng-click="cancleInquiry()"><button class="button button-full  red-bg-font" >
+                撤销询盘
+            </button></div>
+        </div>
+    </div>
+</ion-view>
