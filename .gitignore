@@ -3,7 +3,7 @@
 
 #node_modules
 
-.idea
+/.idea/
 /www/.idea/
 /platforms/android/assets/www/
 /platforms/ios/www/
